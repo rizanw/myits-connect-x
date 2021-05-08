@@ -1,14 +1,10 @@
-// @ts-ignore
 import { h } from "preact";
-// @ts-ignore
 import { Entity, Scene } from "aframe-react";
 
-// @ts-ignore
-import floor from "../../assets/floor.jpg";
-// @ts-ignore
-import sky from "../../assets/sky.jpg";
+import floor from "../assets/floor.jpg";
+import sky from "../assets/sky.jpg";
 
-const Home = () => {
+const VRApp = () => {
   return (
     <Scene>
       <Entity
@@ -39,4 +35,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default VRApp;

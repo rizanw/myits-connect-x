@@ -16,7 +16,7 @@
       "build/"
     ]
   },
-  "devDependencies": {
+  "devDependencies": { 
     "enzyme": "^3.10.0",
     "enzyme-adapter-preact-pure": "^2.0.0",
     "eslint": "^6.0.1",
