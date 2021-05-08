@@ -1,0 +1,346 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+}
+
+.modal.effect_scale .modal_dialog {
+  transform: scale(0.7);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.modal.effect_scale.show .modal_dialog {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.fade {
+  transition: opacity 0.15s linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade {
+    transition: none;
+  }
+}
+.fade:not(.show) {
+  opacity: 0;
+}
+
+.modal_dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+}
+.modal.fade .modal_dialog {
+  transition: transform 0.3s ease-out;
+  transform: translate(0, -50px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal.fade .modal_dialog {
+    transition: none;
+  }
+}
+.modal.show .modal_dialog {
+  transform: none;
+}
+
+.modal_dialog_centered {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+}
+.modal_dialog_centered::before {
+  display: block;
+  height: calc(100vh - 1rem);
+  content: "";
+}
+.modal_dialog_centered.modal_dialog_scrollable {
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.modal_dialog_centered.modal_dialog_scrollable .modal_content {
+  max-height: none;
+}
+.modal_dialog_centered.modal_dialog_scrollable::before {
+  content: none;
+}
+
+@media (min-width: 576px) {
+  .modal_dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+  .modal_dialog_scrollable {
+    max-height: calc(100% - 3.5rem);
+  }
+  .modal_dialog_scrollable .modal_content {
+    max-height: calc(100vh - 3.5rem);
+  }
+  .modal_dialog_centered {
+    min-height: calc(100% - 3.5rem);
+  }
+  .modal_dialog_centered::before {
+    height: calc(100vh - 3.5rem);
+  }
+  .modal_sm {
+    max-width: 300px;
+  }
+}
+
+.modal_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.modal_body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.close {
+  float: right;
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #1b2e4b;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+}
+.close:hover {
+  color: #1b2e4b;
+  text-decoration: none;
+}
+.close:not(:disabled):not(.disabled):hover,
+.close:not(:disabled):not(.disabled):focus {
+  opacity: 0.75;
+}
+
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  appearance: none;
+}
+
+.pos_absolute {
+  position: absolute;
+}
+
+.img_fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.flex_fill {
+  flex: 1 1 auto !important;
+}
+
+.form_group {
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 10;
+}
+
+.form_title {
+  font-weight: 700;
+  margin-bottom: 10;
+  font-size: 15px;
+  color: #1b2e4b;
+}
+
+.form_control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.9375rem + 2px);
+  padding: 0.46875rem 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #596882;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #c0ccda;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  margin-bottom: 10px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .form_control {
+    transition: none;
+  }
+}
+.form_control::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+.form_control:focus {
+  color: #596882;
+  background-color: #fff;
+  border-color: #7cb2fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(1, 104, 250, 0.25);
+}
+.form_control::placeholder {
+  color: #7987a1;
+  opacity: 1;
+}
+.form_control:disabled,
+.form_control[readonly] {
+  background-color: #e3e7ed;
+  opacity: 1;
+}
+
+a {
+  color: #0168fa;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a::hover {
+  color: #0148ae;
+  text-decoration: none;
+}
+
+.tx_bold {
+  font-weight: 700;
+}
+
+.tx_semibold {
+  font-weight: 600;
+}
+
+.btn,
+.ui-datepicker-buttonpane button,
+.sp-container button {
+  display: inline-block;
+  font-weight: 400;
+  color: #001737;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.46875rem 0.9375rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .ui-datepicker-buttonpane button,
+  .sp-container button {
+    transition: none;
+  }
+}
+.btn:hover,
+.ui-datepicker-buttonpane button:hover,
+.sp-container button:hover {
+  color: #001737;
+  text-decoration: none;
+}
+.btn:focus,
+.ui-datepicker-buttonpane button:focus,
+.sp-container button:focus,
+.btn.focus,
+.ui-datepicker-buttonpane button.focus,
+.sp-container button.focus {
+  outline: 0;
+  box-shadow: none;
+}
+.btn.disabled,
+.ui-datepicker-buttonpane button.disabled,
+.sp-container button.disabled,
+.btn:disabled,
+.ui-datepicker-buttonpane button:disabled,
+.sp-container button:disabled {
+  opacity: 0.65;
+}
+
+.btn_white {
+  background-color: #fff;
+  border-color: #c0ccda;
+  color: rgba(27, 46, 75, 0.7);
+}
+.btn_white:hover,
+.btn_white:focus {
+  border-color: #8392a5;
+  color: #1b2e4b;
+}
+.btn_white:active,
+.btn_white.active {
+  background-color: #f5f6fa;
+}
+
+.btn_block {
+  display: block;
+  width: 100%;
+}
+.btn_block + .btn_block {
+  margin-top: 0.5rem;
+}
+
+input[type="submit"].btn_block,
+input[type="reset"].btn_block,
+input[type="button"].btn_block {
+  width: 100%;
+}
+
+.horizontal_center {
+  margin: 0;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+body {
+  font-size: 0.875rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}

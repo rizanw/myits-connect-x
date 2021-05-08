@@ -1,21 +1,18 @@
-import { h } from 'preact';
-import { Router } from 'preact-router';
-
-import Header from './header';
+import { h } from "preact";
+import { Provider } from "react-redux";
+import { store } from "../store";
 
 // Code-splitting is automated for `routes` directory
-import Home from '../routes/home';
-import Profile from '../routes/profile';
+import Home from "../routes/home";
+import LoginDialog from "./loginDialog";
 
 const App = () => (
-	<div id="app">
-		<Header />
-		<Router>
-			<Home path="/" />
-			<Profile path="/profile/" user="me" />
-			<Profile path="/profile/:user" />
-		</Router>
-	</div>
-)
+  <div id="app">
+    <Provider store={store}>
+      <Home />
+      <LoginDialog />
+    </Provider>
+  </div>
+);
 
 export default App;
