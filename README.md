@@ -1,22 +1,27 @@
-# myits-connect-x
+# New Project
 
-## CLI Commands
+> ✨ Bootstrapped with Create Snowpack App (CSA).
 
-``` bash
-# install dependencies
-npm install
+## Available Scripts
 
-# serve with hot reload at localhost:8080
-npm run dev
+### npm start
 
-# build for production with minification
-npm run build
+Runs the app in the development mode.
+Open http://localhost:8080 to view it in the browser.
 
-# test the production build locally
-npm run serve
+The page will reload if you make edits.
+You will also see any lint errors in the console.
 
-# run tests with jest and enzyme
-npm run test
-```
+### npm test
 
-For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
+Launches the test runner in the interactive watch mode.
+See the section about running tests for more information.
+
+### npm run build
+
+Builds the app for production to the `build/` folder.
+It correctly bundles Preact in production mode and optimizes the build for the best performance.
+
+### Q: What about Eject?
+
+No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
