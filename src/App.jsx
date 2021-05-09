@@ -1,9 +1,9 @@
-import { h } from 'preact';
-import { useState, useEffect } from 'preact/hooks';
-import { useSelector } from 'react-redux';
-import VRApp from './VRApp';
-
-import LoginDialog from './components/LoginDialog';
+import { h } from "preact";
+import { useState, useEffect } from "preact/hooks";
+import { useSelector } from "react-redux";
+import "./styles/App.css";
+import VRApp from "./VRApp";
+import LoginDialog from "./components/LoginDialog";
 
 function App() {
   const authState = useSelector((state) => state.auth);
@@ -11,7 +11,7 @@ function App() {
   console.log(authState);
 
   return (
-    <div>
+    <div className="app">
       {authState.email ? <div /> : <LoginDialog />}
       <VRApp />
     </div>

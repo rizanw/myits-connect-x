@@ -1,8 +1,8 @@
-import { h } from 'preact';
-import { Entity } from 'aframe-react';
+import { h } from "preact";
+import { Entity } from "aframe-react";
 
-import navbar from '../assets/gltf/navBar.gltf';
-import button from '../assets/gltf/buttonRec.gltf';
+import navbar from "../assets/gltf/navBar.gltf";
+import button from "../assets/gltf/buttonRec.gltf";
 
 export default function Navigation() {
   return (
@@ -20,6 +20,10 @@ export default function Navigation() {
         color="white"
         material="color: white;"
       />
+
+      <Entity primitive="a-mixin" />
+
+      <Entity gltf-model={button} class="clickable" />
     </Entity>
   );
 }

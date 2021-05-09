@@ -1,7 +1,8 @@
 import { h, render } from 'preact';
 import 'preact/devtools';
 import './styles/index.css';
-import 'aframe';
+import 'aframe';  
+import 'aframe-event-set-component'
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './store';

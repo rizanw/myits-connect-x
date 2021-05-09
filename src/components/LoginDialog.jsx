@@ -1,17 +1,30 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import { useDispatch } from 'react-redux';
-import { login } from '../store/auth';
+import { h } from "preact";
+import { useState } from "preact/hooks";
+import { useDispatch } from "react-redux";
+import { login } from "../store/auth";
 
 //assets import
-import '../styles/LoginDialog.css';
-import myITSlogo from '../assets/img/logo.png';
+import "../styles/LoginDialog.css";
+import myITSlogo from "../assets/img/logo.png";
 
 export default function LoginDialog() {
   const dispatch = useDispatch();
 
-  const [emailField, setEmailField] = useState('');
-  const [passwordField, setPasswordField] = useState('');
+  const [emailField, setEmailField] = useState("");
+  const [passwordField, setPasswordField] = useState("");
+
+  const enterVRMode = () => {
+    var scene = document.querySelector("a-scene");
+    if (scene.hasLoaded) {
+      scene.enterVR();
+    } else {
+      scene.addEventListener("loaded", function () {
+        setTimeout(function () {
+          scene.enterVR();
+        }, 1000);
+      });
+    }
+  };
 
   const onSubmit = (e) => {
     dispatch(login(emailField));
@@ -25,21 +38,21 @@ export default function LoginDialog() {
       tabIndex={-1}
       role="dialog"
       aria-modal="true"
-      style={{ paddingRight: '15px', display: 'block' }}
+      style={{ paddingRight: "15px", display: "block" }}
     >
       <div className="modal_dialog modal_dialog_centered" role="document">
         <div className="modal_content">
-          <div className="modal_body" style={{ padding: '30px' }}>
-            <div style={{ display: 'flex' }}>
+          <div className="modal_body" style={{ padding: "30px" }}>
+            <div style={{ display: "flex" }}>
               <img
-                style={{ marginBottom: '25px', width: '20%' }}
+                style={{ marginBottom: "25px", width: "20%" }}
                 src={myITSlogo}
                 className="img_fluid"
                 alt=""
               />
             </div>
 
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: "flex" }}>
               <div className="flex_fill">
                 <div className="form_group">
                   <h5 className="form_title">Email</h5>
@@ -61,17 +74,17 @@ export default function LoginDialog() {
                   onClick={onSubmit}
                   className="btn btn_whitebtn_block horizontal_center tx_semibold"
                   style={{
-                    maxWidth: '210px',
-                    marginTop: '20px',
+                    maxWidth: "210px",
+                    marginTop: "20px",
                     fontWeight: 600,
                   }}
                 >
                   Masuk dengan email
                 </a>
-                <p style={{ textAlign: 'center', marginTop: '20px' }}>
+                <p style={{ textAlign: "center", marginTop: "20px" }}>
                   Belum punya akun?
                   <a className="tx_bold" href="">
-                    {' '}
+                    {" "}
                     Daftar Sekarang
                   </a>
                 </p>
