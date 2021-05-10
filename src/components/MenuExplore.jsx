@@ -10,6 +10,8 @@ import manarul from "../assets/environtment/360-manarul-indoor.jpg";
 import fasor from "../assets/environtment/360-fasor-lapangan.jpg";
 import tamanAlumni from "../assets/environtment/360-taman-alumni.jpg";
 import perpustakan from "../assets/environtment/360-perpustakaan-front.jpg";
+import { useDispatch } from "react-redux";
+import { changeBackgroundSky } from "../store/system";
 
 const location = [
   baak,
@@ -34,6 +36,8 @@ const locationName = [
 ];
 
 export default function MenuExplore({ visible }) {
+  const dispatch = useDispatch();
+
   const createSphare = () => {
     let childrens = [];
     for (let i = 0; i < 8; i++) {
@@ -81,6 +85,9 @@ export default function MenuExplore({ visible }) {
               to: "1 1 1",
               startEvents: "mouseleave",
               dur: 1000,
+            }}
+            events={{
+              click: () => dispatch(changeBackgroundSky(location[i])),
             }}
           />
         </Entity>

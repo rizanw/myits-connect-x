@@ -13,10 +13,10 @@ export const system = createSlice({
   initialState: initialState,
   reducers: {
     changeBackgroundSky: (state, action) => ({
+      ...state,
       sky: {
         background: action.payload,
       },
-      ...state,
     }),
   },
 });
