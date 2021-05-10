@@ -2,14 +2,14 @@ import { h } from "preact";
 import { Entity } from "aframe-react";
 import { circularPositionFromIndex } from "../utils/calculation";
 
-import baak from "../assets/environtment/360-baak-front.jpg";
-import graha from "../assets/environtment/360-graha-front.jpg";
-import bundaran from "../assets/environtment/360-bundaran.jpg";
-import lingpus from "../assets/environtment/360-lingpus-side.jpg";
-import manarul from "../assets/environtment/360-manarul-indoor.jpg";
-import fasor from "../assets/environtment/360-fasor-lapangan.jpg";
-import tamanAlumni from "../assets/environtment/360-taman-alumni.jpg";
-import perpustakan from "../assets/environtment/360-perpustakaan-front.jpg";
+import baak from "../assets/preview/360-baak-front.jpg";
+import graha from "../assets/preview/360-graha-front.jpg";
+import bundaran from "../assets/preview/360-bundaran.jpg";
+import lingpus from "../assets/preview/360-lingpus-side.jpg";
+import manarul from "../assets/preview/360-manarul-indoor.jpg";
+import fasor from "../assets/preview/360-fasor-lapangan.jpg";
+import tamanAlumni from "../assets/preview/360-taman-alumni.jpg";
+import perpustakan from "../assets/preview/360-perpustakaan-front.jpg";
 
 const location = [
   baak,
