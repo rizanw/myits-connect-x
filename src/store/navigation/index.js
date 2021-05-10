@@ -1,13 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  navigation: {
-    isNotificationActive: false,
-    isExploreActive: false,
-    isMenuActive: false,
-    isProfileActive: false,
-    isSettingsActive: false,
-  },
+  isNotificationActive: false,
+  isExploreActive: false,
+  isMenuActive: false,
+  isProfileActive: false,
+  isSettingsActive: false,
 };
 
 export const navigation = createSlice({
@@ -15,8 +13,8 @@ export const navigation = createSlice({
   initialState: initialState,
   reducers: {
     clickExplore: (state) => ({
-      isExploreActive: true,
       ...state,
+      isExploreActive: true,
     }),
     resetNavigation: (state) => initialState,
   },
