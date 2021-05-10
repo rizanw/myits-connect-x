@@ -8,9 +8,11 @@ import sky from "./assets/img/sky.jpg";
 import rektorat from "./assets/environtment/360-rektorat-pole.jpg";
 import Controllers from "./components/Controllers";
 import MenuExplore from "./components/MenuExplore";
+import { useSelector } from "react-redux";
 
 export default function VRApp() {
   const [background, setBackground] = useState(rektorat);
+  const navigationState = useSelector((state) => state.navigation);
 
   return (
     <Scene vr-mode-ui="enabled: false">
@@ -23,8 +25,7 @@ export default function VRApp() {
       />
       <Lights />
       <Controllers />
-
-      <MenuExplore />
+      {navigationState.isExploreActive ? <MenuExplore /> : null}
       <Navigation />
     </Scene>
   );

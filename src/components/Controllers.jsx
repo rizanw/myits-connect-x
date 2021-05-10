@@ -38,6 +38,7 @@ export default function Controllers() {
             scale: { x: 1, y: 1, z: 1 },
             color: "black",
           }}
+          animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 200; from: 0.1 0.1 0.1; to: 1 1 1"
           raycaster="objects: .clickable"
         />
       </Entity>
