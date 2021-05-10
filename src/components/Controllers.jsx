@@ -4,9 +4,8 @@ import { Entity, Scene } from "aframe-react";
 const geometry = {
   primitive: "ring",
   radiusInner: 0.006,
-  radiusOuter: 0.010,
+  radiusOuter: 0.01,
 };
- 
 
 const material = {
   color: "black",
@@ -32,12 +31,12 @@ export default function Controllers() {
           event-set__enter={{
             _event: "mouseenter",
             scale: { x: 1.4, y: 1.4, z: 1.4 },
-            color: "black"
+            color: "black",
           }}
           event-set__leave={{
             _event: "mouseleave",
             scale: { x: 1, y: 1, z: 1 },
-            color: "black"
+            color: "black",
           }}
           raycaster="objects: .clickable"
         />

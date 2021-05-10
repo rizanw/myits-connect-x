@@ -7,6 +7,7 @@ import Lights from "./components/Lights";
 import sky from "./assets/img/sky.jpg";
 import rektorat from "./assets/environtment/360-rektorat-pole.jpg";
 import Controllers from "./components/Controllers";
+import MenuExplore from "./components/MenuExplore";
 
 export default function VRApp() {
   const [background, setBackground] = useState(rektorat);
@@ -23,6 +24,7 @@ export default function VRApp() {
       <Lights />
       <Controllers />
 
+      <MenuExplore />
       <Navigation />
     </Scene>
   );
