@@ -6,12 +6,11 @@ import Navigation from "./components/Navigation";
 import Lights from "./components/Lights";
 import Controllers from "./components/Controllers";
 import MenuExplore from "./components/MenuExplore";
+import NewsList from "./components/NewsList";
 
 export default function VRApp() {
   const navigationState = useSelector((state) => state.navigation);
   const systemState = useSelector((state) => state.system);
-
-  console.log(navigationState.isExploreActive);
 
   return (
     <Scene vr-mode-ui="enabled: false">
@@ -25,6 +24,7 @@ export default function VRApp() {
       <Lights />
       <Controllers />
       <MenuExplore visible={navigationState.isExploreActive} />
+      <NewsList />
       <Navigation />
     </Scene>
   );
