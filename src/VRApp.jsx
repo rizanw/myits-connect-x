@@ -7,6 +7,7 @@ import Lights from "./components/Lights";
 import Controllers from "./components/Controllers";
 import MenuExplore from "./components/MenuExplore";
 import NewsList from "./components/NewsList";
+import PostList from "./components/PostList";
 import MenuMain from "./components/MenuMain";
 
 export default function VRApp() {
@@ -29,6 +30,7 @@ export default function VRApp() {
       {navigationState.isExploreActive ? <MenuExplore /> : null}
       {navigationState.isMenuActive ? <MenuMain /> : null}
       {navigationState.isNewsListActive ? <NewsList /> : null}
+      {navigationState.isPostsListActive ? <PostList /> : null}
       <Navigation />
     </Scene>
   );

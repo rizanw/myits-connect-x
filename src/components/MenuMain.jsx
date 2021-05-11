@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { Entity } from "aframe-react";
 import { useDispatch } from "react-redux";
-import { clickNewsList } from "../store/navigation";
+import { clickNewsList, clickPostList } from "../store/navigation";
 
 import iconPosts from "../assets/gltf/iconPosts.gltf";
 import iconNews from "../assets/gltf/iconNews.gltf";
@@ -26,6 +26,11 @@ export default function MenuMain() {
           easing: "easeInOutCubic",
           pauseEvents: "mouseenter",
           resumeEvents: "mouseleave",
+        }}
+        events={{
+          click: () => {
+            dispatch(clickPostList());
+          },
         }}
       />
       <Entity
