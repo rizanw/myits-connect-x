@@ -14,7 +14,7 @@ import iconCompass from "../assets/icons/compass.png";
 import iconProfile from "../assets/icons/avatar.png";
 import iconSettings from "../assets/icons/settings.png";
 import iconNotification from "../assets/icons/bell.png";
-import { clickExplore, resetNavigation } from "../store/navigation";
+import { clickExplore, resetNavigation, clickMenu } from "../store/navigation";
 
 export default function Navigation() {
   const [time, setTime] = useState("");
@@ -140,6 +140,13 @@ export default function Navigation() {
           _event: "mouseleave",
           _target: "#menuTitle",
           visible: "false",
+        }}
+        events={{
+          click: () => {
+            navigationState.isMenuActive
+              ? dispatch(resetNavigation())
+              : dispatch(clickMenu());
+          },
         }}
       >
         <Entity

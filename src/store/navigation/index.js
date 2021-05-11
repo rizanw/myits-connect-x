@@ -6,18 +6,32 @@ const initialState = {
   isMenuActive: false,
   isProfileActive: false,
   isSettingsActive: false,
+  isNewsListActive: false,
 };
 
 export const navigation = createSlice({
   name: "navigation",
   initialState: initialState,
   reducers: {
+    clickMenu: (state) => ({
+      ...initialState,
+      isMenuActive: true,
+    }),
     clickExplore: (state) => ({
-      ...state,
+      ...initialState,
       isExploreActive: true,
+    }),
+    clickNewsList: (state) => ({
+      ...initialState,
+      isNewsListActive: true,
     }),
     resetNavigation: (state) => initialState,
   },
 });
 
-export const { clickExplore, resetNavigation } = navigation.actions;
+export const {
+  clickExplore,
+  clickMenu,
+  clickNewsList,
+  resetNavigation,
+} = navigation.actions;

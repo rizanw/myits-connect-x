@@ -35,7 +35,7 @@ const locationName = [
   "Perpustakaan",
 ];
 
-export default function MenuExplore({ visible }) {
+export default function MenuExplore() {
   const dispatch = useDispatch();
 
   const createSphare = () => {
@@ -95,9 +95,5 @@ export default function MenuExplore({ visible }) {
     }
     return childrens;
   };
-  return (
-    <Entity id="menuExplore" visible={visible}>
-      {createSphare()}
-    </Entity>
-  );
+  return <Entity id="menuExplore">{createSphare()}</Entity>;
 }
