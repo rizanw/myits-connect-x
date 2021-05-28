@@ -14,6 +14,10 @@ export const navigation = createSlice({
   name: "navigation",
   initialState: initialState,
   reducers: {
+    clickProfile: (state) => ({
+      ...initialState,
+      isProfileActive: true,
+    }),
     clickMenu: (state) => ({
       ...initialState,
       isMenuActive: true,
@@ -37,6 +41,7 @@ export const navigation = createSlice({
 export const {
   clickExplore,
   clickMenu,
+  clickProfile,
   clickNewsList,
   clickPostList,
   resetNavigation,

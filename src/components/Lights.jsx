@@ -11,7 +11,7 @@ export default function Lights() {
       />
       <Entity
         light={{ type: "point", intensity: "0.4", distance: 40, decay: 2 }}
-        position="0 10 10"
+        position="0 10 0"
       />
     </Entity>
   );

@@ -67,13 +67,6 @@ export default function MenuExplore() {
               _target: "#title-" + i,
               visible: "false",
             }}
-            // animation={{
-            //   property: "rotation",
-            //   to: "0 360 0",
-            //   dur: 5000,
-            //   easing: "linear",
-            //   loop: "true",
-            // }}
             animation__mouseenter_rotate={{
               property: "rotation",
               to: "0 360 0",

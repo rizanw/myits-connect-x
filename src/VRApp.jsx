@@ -32,7 +32,7 @@ export default function VRApp() {
       {navigationState.isMenuActive ? <MenuMain /> : null}
       {navigationState.isNewsListActive ? <NewsList /> : null}
       {navigationState.isPostsListActive ? <PostList /> : null}
-      {/* <Profile /> */}
+      {navigationState.isProfileActive ? <Profile /> : null}
       <Navigation />
     </Scene>
   );
