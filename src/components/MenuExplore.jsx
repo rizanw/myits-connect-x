@@ -67,12 +67,28 @@ export default function MenuExplore() {
               _target: "#title-" + i,
               visible: "false",
             }}
-            animation={{
+            // animation={{
+            //   property: "rotation",
+            //   to: "0 360 0",
+            //   dur: 5000,
+            //   easing: "linear",
+            //   loop: "true",
+            // }}
+            animation__mouseenter_rotate={{
               property: "rotation",
               to: "0 360 0",
+              startEvents: "mouseenter",
               dur: 5000,
               easing: "linear",
               loop: "true",
+            }}
+            animation__mouseleave_rotate={{
+              property: "rotation",
+              to: "0 0 0",
+              startEvents: "mouseleave",
+              dur: 2000,
+              easing: "linear",
+              loop: "false",
             }}
             animation__mouseenter={{
               property: "scale",
