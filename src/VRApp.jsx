@@ -9,6 +9,7 @@ import MenuExplore from "./components/MenuExplore";
 import NewsList from "./components/NewsList";
 import PostList from "./components/PostList";
 import MenuMain from "./components/MenuMain";
+import Profile from "./components/Profile";
 
 export default function VRApp() {
   const navigationState = useSelector((state) => state.navigation);
@@ -31,6 +32,7 @@ export default function VRApp() {
       {navigationState.isMenuActive ? <MenuMain /> : null}
       {navigationState.isNewsListActive ? <NewsList /> : null}
       {navigationState.isPostsListActive ? <PostList /> : null}
+      {/* <Profile /> */}
       <Navigation />
     </Scene>
   );

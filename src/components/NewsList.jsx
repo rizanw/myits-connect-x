@@ -9,7 +9,14 @@ export default function NewsList() {
   const newsState = useSelector((state) => state.news);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getNews());
+  }, []);
+
+  console.log(newsState.posts);
+
   const createCards = () => {
+    let news = newsState.posts;
     let childrens = [];
     for (let i = 0; i < 5; i++) {
       let pos = circularPositionFrom(i, 5);
@@ -20,7 +27,7 @@ export default function NewsList() {
             to: "0 " + (pos.y === 1 ? "360" : "-360") + " 0",
             dur: 10000,
             easing: "linear",
-            loop: "true", 
+            loop: "true",
             pauseEvents: "mouseenter",
             resumeEvents: "mouseleave",
           }}
@@ -48,12 +55,28 @@ export default function NewsList() {
               startEvents: "mouseleave",
               dur: 1000,
             }}
-          ></Entity>
+          >
+            <Entity
+              text={{
+                value: news[i].title,
+                width: 4,
+                color: "white",
+                align: "center",
+              }}
+              position="0.0 -0.75 0.1"
+            />
+            <Entity
+              primitive="a-image"
+              position="0 0.25 0.12"
+              scale="4 1.5 0"
+              src={news[i].thumbnail}
+            />
+          </Entity>
         </Entity>
       );
     }
     return childrens;
   };
 
-  return <Entity id="menuExplore">{createCards()}</Entity>;
+  return <Entity id="newsList">{createCards()}</Entity>;
 }

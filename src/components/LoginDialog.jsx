@@ -6,6 +6,7 @@ import { login } from "../store/auth";
 //assets import
 import "../styles/LoginDialog.css";
 import myITSlogo from "../assets/img/logo.png";
+import { getNews } from "../store/news/actions";
 
 export default function LoginDialog() {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ export default function LoginDialog() {
   };
 
   const onSubmit = (e) => {
+    console.log("login");
+    dispatch(getNews());
     dispatch(login(emailField));
     e.preventDefault();
   };

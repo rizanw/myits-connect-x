@@ -5,6 +5,7 @@ import { clickNewsList, clickPostList } from "../store/navigation";
 
 import iconPosts from "../assets/gltf/iconPosts.gltf";
 import iconNews from "../assets/gltf/iconNews.gltf";
+import { getNews } from "../store/news/actions";
 
 export default function MenuMain() {
   const dispatch = useDispatch();
@@ -51,6 +52,8 @@ export default function MenuMain() {
         }}
         events={{
           click: () => {
+            console.log("get data");
+            dispatch(getNews());
             dispatch(clickNewsList());
           },
         }}

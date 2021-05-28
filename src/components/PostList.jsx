@@ -29,7 +29,7 @@ export default function PostList() {
               depth: 0.2,
             }}
             position={pos}
-            material={{ color: "#111" }}
+            material={{ color: "#eee" }}
             look-at=""
             animation__mouseenter={{
               property: "scale",
@@ -43,7 +43,22 @@ export default function PostList() {
               startEvents: "mouseleave",
               dur: 1000,
             }}
-          ></Entity>
+          >
+            <Entity
+              text={{
+                value: "Judul konten postingan di sini",
+                width: 4,
+                color: "black",
+                align: "center",
+              }}
+              position="0.0 -0.75 0.1"
+            />
+            <Entity
+              primitive="a-image"
+              position="0 0.25 0.12"
+              scale="4 1.5 0"
+            />
+          </Entity>
         </Entity>
       );
     }
