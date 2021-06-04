@@ -8,6 +8,7 @@ const initialState = {
   isSettingsActive: false,
   isNewsListActive: false,
   isPostsListActive: false,
+  isFriendListActive: false,
 };
 
 export const navigation = createSlice({
@@ -37,6 +38,10 @@ export const navigation = createSlice({
     clickSettingScreen: (state) => ({
       ...initialState,
       isSettingsActive: true,
+    }),
+    clickFriendList: (state) => ({
+      ...initialState,
+      isFriendListActive: true,
     }),
     resetNavigation: (state) => initialState,
   },

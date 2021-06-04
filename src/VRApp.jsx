@@ -11,6 +11,7 @@ import PostList from "./components/PostList";
 import MenuMain from "./components/MenuMain";
 import Profile from "./components/Profile";
 import SettingScreen from "./components/SettingScreen";
+import FriendList from "./components/FriendList";
 
 export default function VRApp() {
   const navigationState = useSelector((state) => state.navigation);
@@ -35,6 +36,7 @@ export default function VRApp() {
       {navigationState.isPostsListActive ? <PostList /> : null}
       {navigationState.isProfileActive ? <Profile /> : null}
       {navigationState.isSettingsActive ? <SettingScreen /> : null}
+      {navigationState.isFriendListActive ? <FriendList /> : null}
       <Navigation />
     </Scene>
   );

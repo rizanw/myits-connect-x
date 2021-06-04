@@ -242,7 +242,7 @@ export default function SettingScreen() {
             </Entity>
             <Entity
               text={{
-                value: "0.4",
+                value: "1.0x",
                 width: 4,
                 color: "white",
                 align: "center",
@@ -305,8 +305,19 @@ export default function SettingScreen() {
                 color: "#3A337D",
                 opacity: "0.9",
               }}
+              event-set__enter={{
+                _event: "mouseenter",
+                _target: "#itsTitle",
+                scale: "1.5 1.5 1.5",
+              }}
+              event-set__leave={{
+                _event: "mouseleave",
+                _target: "#itsTitle",
+                scale: "1 1 1",
+              }}
             >
               <Entity
+                id="itsTitle"
                 text={{
                   value: "ITS",
                   width: 3,
@@ -327,8 +338,19 @@ export default function SettingScreen() {
                 depth: 0.02,
               }}
               position="1.2 0.65 0.02"
+              event-set__enter={{
+                _event: "mouseenter",
+                _target: "#colorTitle",
+                scale: "1.5 1.5 1.5",
+              }}
+              event-set__leave={{
+                _event: "mouseleave",
+                _target: "#colorTitle",
+                scale: "1 1 1",
+              }}
             >
               <Entity
+                id="colorTitle"
                 text={{
                   value: "Color Fun",
                   width: 3,
