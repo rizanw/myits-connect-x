@@ -1,10 +1,10 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
   mount: {
-    public: { url: '/', static: true },
-    src: { url: '/dist' },
+    public: { url: "/", static: true },
+    src: { url: "/dist" },
   },
-  plugins: ['@snowpack/plugin-dotenv', '@prefresh/snowpack'],
+  plugins: ["@snowpack/plugin-dotenv", "@prefresh/snowpack"],
   routes: [
     /* Enable an SPA Fallback in development: */
     // {"match": "routes", "src": ".*", "dest": "/index.html"},
@@ -12,6 +12,9 @@ module.exports = {
   optimize: {
     /* Example: Bundle your final build: */
     // "bundle": true,
+    bundle: true,
+    minify: true,
+    target: "es2018",
   },
   packageOptions: {
     /* ... */
