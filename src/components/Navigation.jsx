@@ -19,6 +19,7 @@ import {
   resetNavigation,
   clickMenu,
   clickProfile,
+  clickSettingScreen,
 } from "../store/navigation";
 
 export default function Navigation() {
@@ -72,6 +73,13 @@ export default function Navigation() {
           _event: "mouseleave",
           _target: "#settingsTitle",
           visible: "false",
+        }}
+        events={{
+          click: () => {
+            navigationState.isSettingsActive
+              ? dispatch(resetNavigation())
+              : dispatch(clickSettingScreen());
+          },
         }}
       >
         <Entity

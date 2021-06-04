@@ -1,6 +1,8 @@
 import { h } from "preact";
 import { Entity } from "aframe-react";
 import { circularPositionFromIndex } from "../utils/calculation";
+import { useDispatch } from "react-redux";
+import { changeBackgroundSky } from "../store/system";
 
 import baak from "../assets/environtment/360-baak-front.jpg";
 import graha from "../assets/environtment/360-graha-front.jpg";
@@ -10,8 +12,6 @@ import manarul from "../assets/environtment/360-manarul-indoor.jpg";
 import fasor from "../assets/environtment/360-fasor-lapangan.jpg";
 import tamanAlumni from "../assets/environtment/360-taman-alumni.jpg";
 import perpustakan from "../assets/environtment/360-perpustakaan-front.jpg";
-import { useDispatch } from "react-redux";
-import { changeBackgroundSky } from "../store/system";
 
 const location = [
   baak,

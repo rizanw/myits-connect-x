@@ -34,6 +34,10 @@ export const navigation = createSlice({
       ...initialState,
       isPostsListActive: true,
     }),
+    clickSettingScreen: (state) => ({
+      ...initialState,
+      isSettingsActive: true,
+    }),
     resetNavigation: (state) => initialState,
   },
 });
@@ -45,4 +49,5 @@ export const {
   clickNewsList,
   clickPostList,
   resetNavigation,
+  clickSettingScreen,
 } = navigation.actions;

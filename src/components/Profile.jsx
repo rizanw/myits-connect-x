@@ -10,9 +10,12 @@ import {
 
 import avatar from "../assets/icons/avatar-s.png";
 import education from "../assets/icons/book.png";
+import plus from "../assets/icons/plus.png";
+import friendlist from "../assets/icons/group.png";
 import experience from "../assets/icons/suitcase.png";
 import skill from "../assets/icons/logical-thinking.png";
 import button from "../assets/gltf/buttonRec.gltf";
+import buttonSmall from "../assets/gltf/buttonRecSmall.gltf";
 
 const KEAHLIAN = [
   { id: "321321", title: "React" },
@@ -206,7 +209,7 @@ export default function Profile() {
         <Entity
           geometry={{ primitive: "cylinder", height: 0.3, radius: 0.8 }}
           rotation="90 0 0"
-          position="-2.2 1.5 0.05"
+          position="0 2 0.05"
         >
           <Entity
             primitive="a-image"
@@ -216,31 +219,99 @@ export default function Profile() {
           />
         </Entity>
         <Entity
+          class="clickable"
+          gltf-model={buttonSmall}
+          scale="0.9 0.9 0.9"
+          position="1.8 1.8 0.120"
+          event-set__enter={{
+            _event: "mouseenter",
+            _target: "#connectTitle",
+            visible: "true",
+          }}
+          event-set__leave={{
+            _event: "mouseleave",
+            _target: "#connectTitle",
+            visible: "false",
+          }}
+        >
+          <Entity
+            primitive="a-image"
+            src={plus}
+            position="0 0 0.12"
+            scale="0.4 0.4 0.4"
+          />
+          <Entity
+            id="connectTitle"
+            text={{
+              value: "Connect",
+              width: 5,
+              color: "black",
+              align: "center",
+            }}
+            position="0 -0.6 0"
+            visible="false"
+          />
+        </Entity>
+        <Entity
+          class="clickable"
+          gltf-model={buttonSmall}
+          scale="0.9 0.9 0.9"
+          position="-1.8 1.8 0.120"
+          event-set__enter={{
+            _event: "mouseenter",
+            _target: "#friendlistTitle",
+            visible: "true",
+          }}
+          event-set__leave={{
+            _event: "mouseleave",
+            _target: "#friendlistTitle",
+            visible: "false",
+          }}
+        >
+          <Entity
+            primitive="a-image"
+            src={friendlist}
+            position="0 0 0.12"
+            scale="0.5 0.5 0.5"
+          />
+          <Entity
+            id="friendlistTitle"
+            text={{
+              value: "FriendList",
+              width: 5,
+              color: "black",
+              align: "center",
+            }}
+            position="0 -0.6 0"
+            visible="false"
+          />
+        </Entity>
+        <Entity
           text={{
             value: "Rizky Andre Wibisono",
             width: 8,
             color: "black",
-            align: "left",
+            align: "center",
           }}
-          position="2.8 1.7 0.2"
+          position="0 0.9 0.2"
         />
         <Entity
           text={{
             value: "Fresh Graduate Teknik Informatika",
             width: 5,
             color: "black",
-            align: "left",
+            align: "center",
           }}
-          position="1.35 1.3 0.2"
+          position="0 0.5 0.2"
         />
         <Entity
           text={{
             value: "DIY Yogyakarta, Indonesia",
             width: 5,
             color: "black",
-            align: "left",
+            align: "center",
           }}
-          position="1.35 1 0.2"
+          position="0 0.2 0.2"
         />
 
         <Entity

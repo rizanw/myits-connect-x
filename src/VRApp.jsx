@@ -10,6 +10,7 @@ import NewsList from "./components/NewsList";
 import PostList from "./components/PostList";
 import MenuMain from "./components/MenuMain";
 import Profile from "./components/Profile";
+import SettingScreen from "./components/SettingScreen";
 
 export default function VRApp() {
   const navigationState = useSelector((state) => state.navigation);
@@ -33,6 +34,7 @@ export default function VRApp() {
       {navigationState.isNewsListActive ? <NewsList /> : null}
       {navigationState.isPostsListActive ? <PostList /> : null}
       {navigationState.isProfileActive ? <Profile /> : null}
+      {navigationState.isSettingsActive ? <SettingScreen /> : null}
       <Navigation />
     </Scene>
   );

@@ -14,7 +14,8 @@ export const auth = createSlice({
       name: "Rizky Andre Wibisono",
       email: action.payload,
     }),
+    logout: (state, action) => ({ ...initialState }),
   },
 });
 
-export const { login } = auth.actions;
+export const { login, logout } = auth.actions;
