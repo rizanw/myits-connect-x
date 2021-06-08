@@ -1,4 +1,7 @@
 {
+  "name": "myits-connect-x",
+  "version": "0.1.0", 
+  "license": "MIT",
   "scripts": {
     "start": "snowpack dev --port 3000",
     "build": "snowpack build",
