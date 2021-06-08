@@ -2,7 +2,7 @@
 module.exports = {
   mount: {
     public: { url: "/", static: true },
-    src: { url: "/dist" },
+    src: { url: "/xr/myits-connect-x/dist" },
   },
   plugins: ["@snowpack/plugin-dotenv", "@prefresh/snowpack"],
   routes: [
