@@ -1,9 +1,4 @@
-#! /bin/sh
-sudo su
-
-yarn isntall
-
-yarn build 
+#! /bin/sh 
 
 find ./build/dist/assets -type f -follow -print0 | while IFS= read -r -d $'\0' filename
 do 
