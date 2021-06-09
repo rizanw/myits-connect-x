@@ -1,0 +1,18 @@
+#! /bin/sh
+sudo su
+
+yarn isntall
+
+yarn build 
+
+find ./build/dist/assets -type f -follow -print0 | while IFS= read -r -d $'\0' filename
+do 
+    str=$(head -n 1 $filename)
+    find='"/'
+    replace='"./' 
+    result=${str//$find/$replace}
+    sed '1d' $filename > $filename
+    echo $result >> $filename
+done
+
+cp -r ./build/* $1

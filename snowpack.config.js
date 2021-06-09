@@ -2,7 +2,7 @@
 module.exports = {
   mount: {
     public: { url: "/", static: true },
-    src: { url: "/xr/myits-connect-x/dist" },
+    src: { url: "/dist" },
   },
   plugins: ["@snowpack/plugin-dotenv", "@prefresh/snowpack"],
   routes: [
@@ -11,8 +11,8 @@ module.exports = {
   ],
   optimize: {
     /* Example: Bundle your final build: */
-    // "bundle": true,
-    minify: true,
+    // "bundle": true, 
+    // minify: true, 
   },
   packageOptions: {
     /* ... */
