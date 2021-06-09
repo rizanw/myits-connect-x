@@ -1,13 +1,9 @@
-#! /bin/sh 
+#! /bin/sh
 
-find ./build/dist/assets -type f -follow -print0 | while IFS= read -r -d $'\0' filename
-do 
-    str=$(head -n 1 $filename)
-    find='"/'
-    replace='"./' 
-    result=${str//$find/$replace}
-    sed '1d' $filename > $filename
-    echo $result >> $filename
+find='"/'
+replace='"./'
+
+for filename in $(find ./build/dist/assets -name "*.proxy.js" -type f -follow -print)
+do
+    sed -i 's+"/+"./+g' $filename
 done
-
-cp -r ./build/* $1
