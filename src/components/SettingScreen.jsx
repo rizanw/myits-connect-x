@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/auth";
 import { resetNavigation } from "../store/navigation";
 import { clickGeneral, clickTheme } from "../store/setting";
-import { decreaseOrbitalSpeed, increaseOrbitaSpeed } from "../store/system";
+import {
+  decreaseOrbitalSpeed,
+  increaseOrbitaSpeed,
+  selectLanguage,
+  selectTheme,
+} from "../store/system";
 
 import iconArrow from "../assets/icons/arrow.png";
 
@@ -158,15 +163,20 @@ export default function SettingScreen() {
                 depth: 0.02,
               }}
               material={{
-                color: "#3A337D",
+                color: systemState.language === "id" ? "#3A337D" : "#fff",
               }}
               position="0.03 0.55 0.02"
+              events={{
+                click: () => {
+                  dispatch(selectLanguage("id"));
+                },
+              }}
             >
               <Entity
                 text={{
                   value: "Bahasa Indonesia",
                   width: 2.5,
-                  color: "white",
+                  color: systemState.language === "id" ? "white" : "black",
                   align: "center",
                 }}
                 position="0 0 0.03"
@@ -181,15 +191,20 @@ export default function SettingScreen() {
                 depth: 0.02,
               }}
               material={{
-                color: "#fff",
+                color: systemState.language === "en" ? "#3A337D" : "#fff",
               }}
               position="1.13 0.55 0.02"
+              events={{
+                click: () => {
+                  dispatch(selectLanguage("en"));
+                },
+              }}
             >
               <Entity
                 text={{
                   value: "English",
                   width: 2.5,
-                  color: "black",
+                  color: systemState.language === "en" ? "white" : "black",
                   align: "center",
                 }}
                 position="0 0 0.03"
@@ -319,6 +334,11 @@ export default function SettingScreen() {
                 _target: "#itsTitle",
                 scale: "1 1 1",
               }}
+              events={{
+                click: () => {
+                  dispatch(selectTheme("its"));
+                },
+              }}
             >
               <Entity
                 id="itsTitle"
@@ -330,6 +350,31 @@ export default function SettingScreen() {
                 }}
                 position="0 0 0.01"
               />
+              {systemState.theme === "its" ? (
+                <Entity
+                  geometry={{
+                    primitive: "box",
+                    height: 0.05,
+                    width: 1.0,
+                    depth: 0.02,
+                  }}
+                  material={{
+                    color: "#3A337D",
+                    opacity: "0.9",
+                  }}
+                  position="0 -0.35 0"
+                >
+                  <Entity
+                    text={{
+                      value: "Terpilih",
+                      width: 2,
+                      color: "black",
+                      align: "center",
+                    }}
+                    position="-0.36 -0.1 0.03"
+                  />
+                </Entity>
+              ) : null}
             </Entity>
           </Entity>
           <Entity id="colorfun">
@@ -352,6 +397,11 @@ export default function SettingScreen() {
                 _target: "#colorTitle",
                 scale: "1 1 1",
               }}
+              events={{
+                click: () => {
+                  dispatch(selectTheme("colorfun"));
+                },
+              }}
             >
               <Entity
                 id="colorTitle"
@@ -363,6 +413,31 @@ export default function SettingScreen() {
                 }}
                 position="0 0 0.03"
               />
+              {systemState.theme === "colorfun" ? (
+                <Entity
+                  geometry={{
+                    primitive: "box",
+                    height: 0.05,
+                    width: 1.0,
+                    depth: 0.02,
+                  }}
+                  material={{
+                    color: "#3A337D",
+                    opacity: "0.9",
+                  }}
+                  position="0 -0.35 0"
+                >
+                  <Entity
+                    text={{
+                      value: "Terpilih",
+                      width: 2,
+                      color: "black",
+                      align: "center",
+                    }}
+                    position="-0.36 -0.1 0.03"
+                  />
+                </Entity>
+              ) : null}
             </Entity>
           </Entity>
         </Entity>

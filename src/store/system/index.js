@@ -7,6 +7,8 @@ const initialState = {
     background: rektorat,
   },
   orbitalSpeed: 1,
+  theme: "colorfun",
+  language: "id",
 };
 
 export const system = createSlice({
@@ -45,6 +47,14 @@ export const system = createSlice({
         };
       }
     },
+    selectTheme: (state, action) => ({
+      ...state,
+      theme: action.payload,
+    }),
+    selectLanguage: (state, action) => ({
+      ...state,
+      language: action.payload,
+    }),
   },
 });
 
@@ -52,4 +62,6 @@ export const {
   changeBackgroundSky,
   increaseOrbitaSpeed,
   decreaseOrbitalSpeed,
+  selectTheme,
+  selectLanguage,
 } = system.actions;
