@@ -55,4 +55,5 @@ export const {
   clickPostList,
   resetNavigation,
   clickSettingScreen,
+  clickFriendList,
 } = navigation.actions;

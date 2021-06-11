@@ -7,6 +7,7 @@ import {
   clickSkill,
   resetNavigation,
 } from "../store/profile";
+import { clickFriendList } from "../store/navigation";
 
 import avatar from "../assets/icons/avatar-s.png";
 import education from "../assets/icons/book.png";
@@ -266,6 +267,11 @@ export default function Profile() {
             _event: "mouseleave",
             _target: "#friendlistTitle",
             visible: "false",
+          }}
+          events={{
+            click: () => {
+              dispatch(clickFriendList());
+            },
           }}
         >
           <Entity

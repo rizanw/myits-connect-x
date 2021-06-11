@@ -1,12 +1,16 @@
 import { h } from "preact";
 import { Entity } from "aframe-react";
 import { circularFriendPositionFrom } from "../utils/calculation";
+import { clickProfile } from "../store/navigation";
+import { useDispatch } from "react-redux";
 
 import avatar from "../assets/icons/avatar-s.png";
 import button from "../assets/gltf/buttonRec.gltf";
 import iconArrow from "../assets/icons/arrow.png";
 
 export default function FriendList() {
+  const dispatch = useDispatch();
+
   const createCards = () => {
     let childrens = [];
     for (let i = 0; i < 30; i++) {
@@ -28,7 +32,7 @@ export default function FriendList() {
               primitive: "box",
               height: 1,
               width: 2,
-              depth: 0.02,
+              depth: 0.1,
             }}
             position={pos}
             animation__mouseenter={{
@@ -43,11 +47,16 @@ export default function FriendList() {
               startEvents: "mouseleave",
               dur: 1000,
             }}
+            events={{
+              click: () => {
+                dispatch(clickProfile());
+              },
+            }}
           >
             <Entity
               primitive="a-image"
               src={avatar}
-              position="-0.7 0 0.015"
+              position="-0.7 0 0.06"
               scale="0.5 0.5 0.5"
             />
             <Entity
@@ -58,7 +67,7 @@ export default function FriendList() {
                 align: "left",
                 anchor: "left",
               }}
-              position="-0.4 0.2 0.01"
+              position="-0.4 0.2 0.05"
             />
             <Entity
               text={{
@@ -68,7 +77,7 @@ export default function FriendList() {
                 align: "left",
                 anchor: "left",
               }}
-              position="-0.4 0 0.01"
+              position="-0.4 0 0.05"
             />
             <Entity
               text={{
@@ -78,7 +87,7 @@ export default function FriendList() {
                 align: "left",
                 anchor: "left",
               }}
-              position="-0.4 -0.2 0.01"
+              position="-0.4 -0.2 0.05"
             />
           </Entity>
         </Entity>
