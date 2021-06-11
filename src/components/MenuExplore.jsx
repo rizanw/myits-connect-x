@@ -46,11 +46,26 @@ export default function MenuExplore() {
         <Entity position={pos}>
           <Entity
             id={"title-" + i}
-            text={{ value: locationName[i], width: 8, align: "center" }}
+            primitive="a-plane"
+            material={{
+              color: "#eee",
+              opacity: "0.6",
+            }}
+            position="0 -1.4 0"
+            height="0.6"
+            width="2.4"
             look-at="#controller"
-            position="0 1.6 0"
             visible="false"
-          />
+          >
+            <Entity
+              text={{
+                value: locationName[i],
+                width: 7,
+                color: "black",
+                align: "center",
+              }}
+            />
+          </Entity>
           <Entity
             class="clickable"
             geometry="primitive: sphere; radius: 0.6"
