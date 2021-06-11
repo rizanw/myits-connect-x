@@ -6,8 +6,9 @@ import { circularPositionFrom } from "../utils/calculation";
 import { getNews } from "../store/news/actions";
 
 export default function NewsList() {
-  const newsState = useSelector((state) => state.news);
   const dispatch = useDispatch();
+  const newsState = useSelector((state) => state.news);
+  const systemState = useSelector((state) => state.system);
 
   useEffect(() => {
     dispatch(getNews());
@@ -25,7 +26,7 @@ export default function NewsList() {
           animation={{
             property: "rotation",
             to: "0 " + (pos.y === 1 ? "360" : "-360") + " 0",
-            dur: 10000,
+            dur: 10000 / systemState.orbitalSpeed.toFixed(1),
             easing: "linear",
             loop: "true",
             pauseEvents: "mouseenter",

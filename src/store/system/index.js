@@ -6,6 +6,7 @@ const initialState = {
   sky: {
     background: rektorat,
   },
+  orbitalSpeed: 1,
 };
 
 export const system = createSlice({
@@ -18,7 +19,37 @@ export const system = createSlice({
         background: action.payload,
       },
     }),
+    increaseOrbitaSpeed: (state, action) => {
+      if (state.orbitalSpeed < 2) {
+        return {
+          ...state,
+          orbitalSpeed: state.orbitalSpeed + 0.1,
+        };
+      } else {
+        return {
+          ...state,
+          orbitalSpeed: 2,
+        };
+      }
+    },
+    decreaseOrbitalSpeed: (state, action) => {
+      if (state.orbitalSpeed > 0) {
+        return {
+          ...state,
+          orbitalSpeed: state.orbitalSpeed - 0.1,
+        };
+      } else {
+        return {
+          ...state,
+          orbitalSpeed: 0,
+        };
+      }
+    },
   },
 });
 
-export const { changeBackgroundSky } = system.actions;
+export const {
+  changeBackgroundSky,
+  increaseOrbitaSpeed,
+  decreaseOrbitalSpeed,
+} = system.actions;

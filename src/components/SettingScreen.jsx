@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/auth";
 import { resetNavigation } from "../store/navigation";
 import { clickGeneral, clickTheme } from "../store/setting";
+import { decreaseOrbitalSpeed, increaseOrbitaSpeed } from "../store/system";
 
 import iconArrow from "../assets/icons/arrow.png";
 
 export default function SettingScreen() {
   const dispatch = useDispatch();
   const settingState = useSelector((state) => state.setting);
+  const systemState = useSelector((state) => state.system);
 
   return (
     <Entity
@@ -217,13 +219,18 @@ export default function SettingScreen() {
               material={{
                 color: "#fff",
               }}
+              position="-0.3 -0.3 0.02"
               event-set__mouseenter={{
                 material: {
                   color: "#3A337D",
                 },
               }}
               event-set__mouseleave="material.color: #fff"
-              position="-0.3 -0.3 0.02"
+              events={{
+                click: () => {
+                  dispatch(decreaseOrbitalSpeed());
+                },
+              }}
             >
               <Entity
                 geometry="primitive: plane; height: 1.0; width: 1.0"
@@ -235,7 +242,7 @@ export default function SettingScreen() {
             </Entity>
             <Entity
               text={{
-                value: "1.0x",
+                value: systemState.orbitalSpeed.toFixed(1) + "x",
                 width: 4,
                 color: "black",
                 align: "center",
@@ -253,13 +260,18 @@ export default function SettingScreen() {
               material={{
                 color: "#fff",
               }}
+              position="0.6 -0.3 0.02"
               event-set__mouseenter={{
                 material: {
                   color: "#3A337D",
                 },
               }}
               event-set__mouseleave="material.color: #fff"
-              position="0.6 -0.3 0.02"
+              events={{
+                click: () => {
+                  dispatch(increaseOrbitaSpeed());
+                },
+              }}
             >
               <Entity
                 geometry="primitive: plane; height: 1.0; width: 1.0"

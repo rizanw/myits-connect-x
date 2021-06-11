@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { circularPositionFrom } from "../utils/calculation";
 
 export default function PostList() {
+  const dispatch = useDispatch();
+  const systemState = useSelector((state) => state.system);
+
   const createCards = () => {
     let childrens = [];
     for (let i = 0; i < 9; i++) {
@@ -13,7 +16,7 @@ export default function PostList() {
           animation={{
             property: "rotation",
             to: "0 " + (pos.y === 1 ? "360" : "-360") + " 0",
-            dur: 10000,
+            dur: 10000 / systemState.orbitalSpeed.toFixed(1),
             easing: "linear",
             loop: "true",
             pauseEvents: "mouseenter",
