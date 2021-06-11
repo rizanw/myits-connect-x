@@ -19,7 +19,7 @@ export default function SettingScreen() {
       height="3"
       width="5"
       material={{
-        color: "#111",
+        color: "#ddd",
         opacity: "0.9",
       }}
     >
@@ -30,7 +30,7 @@ export default function SettingScreen() {
         width="1.8"
         depth="0.020"
         material={{
-          color: "#000",
+          color: "#fff",
           opacity: "0.9",
         }}
       >
@@ -38,7 +38,7 @@ export default function SettingScreen() {
           text={{
             value: "Pengaturan",
             width: 4,
-            color: "white",
+            color: "black",
             align: "center",
           }}
           position="0 1.25 0.01"
@@ -50,10 +50,7 @@ export default function SettingScreen() {
           height="0.4"
           width="1.6"
           depth="0.020"
-          material={{
-            color: settingState.isGeneralActive ? "#3A337D" : "#111111",
-            opacity: "0.9",
-          }}
+          color={settingState.isGeneralActive ? "#3A337D" : "#fff"}
           events={{
             click: () => {
               dispatch(clickGeneral());
@@ -64,7 +61,7 @@ export default function SettingScreen() {
             text={{
               value: "Umum",
               width: 4,
-              color: "white",
+              color: settingState.isGeneralActive ? "white" : "black",
               align: "center",
             }}
             position="0 0 0.01"
@@ -77,10 +74,7 @@ export default function SettingScreen() {
           height="0.4"
           width="1.6"
           depth="0.020"
-          material={{
-            color: settingState.isThemeActive ? "#3A337D" : "#111111",
-            opacity: "0.9",
-          }}
+          color={settingState.isThemeActive ? "#3A337D" : "#fff"}
           events={{
             click: () => {
               dispatch(clickTheme());
@@ -91,7 +85,7 @@ export default function SettingScreen() {
             text={{
               value: "Tema",
               width: 4,
-              color: "white",
+              color: settingState.isThemeActive ? "white" : "black",
               align: "center",
             }}
             position="0 0 0.01"
@@ -138,7 +132,7 @@ export default function SettingScreen() {
             text={{
               value: "Umum",
               width: 4,
-              color: "white",
+              color: "black",
               align: "center",
             }}
             position="-0.3 1.25 0.01"
@@ -148,7 +142,7 @@ export default function SettingScreen() {
               text={{
                 value: "Bahasa",
                 width: 3.2,
-                color: "white",
+                color: "black",
                 align: "center",
               }}
               position="-0.3 0.85 0.01"
@@ -170,7 +164,7 @@ export default function SettingScreen() {
                 text={{
                   value: "Bahasa Indonesia",
                   width: 2.5,
-                  color: "black",
+                  color: "white",
                   align: "center",
                 }}
                 position="0 0 0.03"
@@ -206,7 +200,7 @@ export default function SettingScreen() {
               text={{
                 value: "News/Post Kecepatan Orbit",
                 width: 3.2,
-                color: "white",
+                color: "black",
                 align: "left",
                 anchor: "left",
               }}
@@ -228,12 +222,11 @@ export default function SettingScreen() {
                   color: "#3A337D",
                 },
               }}
-              event-set__mouseleave="material.color: white"
+              event-set__mouseleave="material.color: #fff"
               position="-0.3 -0.3 0.02"
             >
               <Entity
                 geometry="primitive: plane; height: 1.0; width: 1.0"
-                color="white"
                 material={{ src: iconArrow, alphaTest: 0.5 }}
                 position="0 0 0.01"
                 rotation="0 0 180"
@@ -244,7 +237,7 @@ export default function SettingScreen() {
               text={{
                 value: "1.0x",
                 width: 4,
-                color: "white",
+                color: "black",
                 align: "center",
               }}
               position="0.15 -0.3 0.01"
@@ -265,12 +258,11 @@ export default function SettingScreen() {
                   color: "#3A337D",
                 },
               }}
-              event-set__mouseleave="material.color: white"
+              event-set__mouseleave="material.color: #fff"
               position="0.6 -0.3 0.02"
             >
               <Entity
                 geometry="primitive: plane; height: 1.0; width: 1.0"
-                color="white"
                 material={{ src: iconArrow, alphaTest: 0.5 }}
                 position="0 0 0.01"
                 scale="0.2 0.2 0.2"
@@ -286,7 +278,7 @@ export default function SettingScreen() {
             text={{
               value: "Tema",
               width: 4,
-              color: "white",
+              color: "black",
               align: "center",
             }}
             position="-0.3 1.25 0.01"
@@ -354,7 +346,7 @@ export default function SettingScreen() {
                 text={{
                   value: "Color Fun",
                   width: 3,
-                  color: "white",
+                  color: "black",
                   align: "center",
                 }}
                 position="0 0 0.03"
