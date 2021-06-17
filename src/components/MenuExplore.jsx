@@ -110,9 +110,6 @@ export default function MenuExplore() {
               startEvents: "mouseleave",
               dur: 1000,
             }}
-            events={{
-              click: () => dispatch(changeBackgroundSky(location[i])),
-            }}
           />
         </Entity>
       );

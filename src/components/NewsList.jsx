@@ -1,9 +1,10 @@
 import { h } from "preact";
 import { useEffect } from "preact/hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { Entity } from "aframe-react";
+import { Entity, Scene } from "aframe-react";
 import { circularPositionFrom } from "../utils/calculation";
 import { getNews } from "../store/news/actions";
+import Loading from "./Loading";
 
 export default function NewsList() {
   const dispatch = useDispatch();
@@ -79,5 +80,7 @@ export default function NewsList() {
     return childrens;
   };
 
-  return <Entity id="newsList">{createCards()}</Entity>;
+  if (newsState.posts.length)
+    return <Entity id="newsList">{createCards()}</Entity>;
+  else return <Loading />;
 }

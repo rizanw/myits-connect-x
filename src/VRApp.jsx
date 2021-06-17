@@ -17,8 +17,6 @@ export default function VRApp() {
   const navigationState = useSelector((state) => state.navigation);
   const systemState = useSelector((state) => state.system);
 
-  console.log(navigationState);
-
   return (
     <Scene vr-mode-ui="enabled: false">
       <Entity
