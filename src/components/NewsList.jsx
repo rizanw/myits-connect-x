@@ -5,6 +5,7 @@ import { Entity, Scene } from "aframe-react";
 import { circularPositionFrom } from "../utils/calculation";
 import { getNews } from "../store/news/actions";
 import Loading from "./Loading";
+import { clickNewsDetail } from "../store/navigation";
 
 export default function NewsList() {
   const dispatch = useDispatch();
@@ -56,6 +57,16 @@ export default function NewsList() {
               to: "1 1 1",
               startEvents: "mouseleave",
               dur: 1000,
+            }}
+            events={{
+              click: () => {
+                dispatch(
+                  clickNewsDetail({
+                    title: news[i].title,
+                    content: news[i].content,
+                  })
+                );
+              },
             }}
           >
             <Entity
