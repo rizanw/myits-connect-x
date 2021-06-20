@@ -8,6 +8,7 @@ import {
   resetNavigation,
 } from "../store/profile";
 import { clickFriendList } from "../store/navigation";
+import { randomColor } from "../utils/colors";
 
 import avatar from "../assets/icons/avatar-s.png";
 import education from "../assets/icons/book.png";
@@ -59,6 +60,9 @@ const PENDIDIKAN = [
 export default function Profile() {
   const dispatch = useDispatch();
   const navigationState = useSelector((state) => state.profileNavigation);
+  const systemState = useSelector((state) => state.system);
+
+  console.log(systemState);
 
   const createEducationCards = () => {
     let childrens = [];
@@ -71,6 +75,9 @@ export default function Profile() {
             height: 1.2,
             width: 5,
             depth: 0.2,
+          }}
+          material={{
+            color: systemState.theme === "colorfun" ? randomColor() : "#fff",
           }}
           position={"2.6 " + startPos + " -5"}
           rotation="0 -15 0"
@@ -124,6 +131,9 @@ export default function Profile() {
             width: 5,
             depth: 0.2,
           }}
+          material={{
+            color: systemState.theme === "colorfun" ? randomColor() : "#fff",
+          }}
           position={"2.6 " + startPos + " -5"}
           rotation="0 -15 0"
         >
@@ -176,6 +186,9 @@ export default function Profile() {
             width: 5,
             depth: 0.2,
           }}
+          material={{
+            color: systemState.theme === "colorfun" ? randomColor() : "#fff",
+          }}
           position={"2.6 " + startPos + " -5"}
           rotation="0 -15 0"
         >
@@ -204,11 +217,17 @@ export default function Profile() {
           width: 5.5,
           depth: 0.2,
         }}
+        material={{
+          color: systemState.theme === "colorfun" ? randomColor() : "#3A337D",
+        }}
         position="-2.8 1.8 -5"
         rotation="0 15 0"
       >
         <Entity
           geometry={{ primitive: "cylinder", height: 0.3, radius: 0.8 }}
+          material={{
+            color: systemState.theme === "colorfun" ? randomColor() : "#fff",
+          }}
           rotation="90 0 0"
           position="0 2 0.05"
         >
@@ -246,7 +265,7 @@ export default function Profile() {
             text={{
               value: "Connect",
               width: 5,
-              color: "black",
+              color: systemState.theme === "colorfun" ? "#000" : "#fff",
               align: "center",
             }}
             position="0 -0.6 0"
@@ -285,7 +304,7 @@ export default function Profile() {
             text={{
               value: "FriendList",
               width: 5,
-              color: "black",
+              color: systemState.theme === "colorfun" ? "#000" : "#fff",
               align: "center",
             }}
             position="0 -0.6 0"
@@ -296,7 +315,7 @@ export default function Profile() {
           text={{
             value: "Rizky Andre Wibisono",
             width: 8,
-            color: "black",
+            color: systemState.theme === "colorfun" ? "#000" : "#fff",
             align: "center",
           }}
           position="0 0.9 0.2"
@@ -305,7 +324,7 @@ export default function Profile() {
           text={{
             value: "Fresh Graduate Teknik Informatika",
             width: 5,
-            color: "black",
+            color: systemState.theme === "colorfun" ? "#000" : "#fff",
             align: "center",
           }}
           position="0 0.5 0.2"
@@ -314,7 +333,7 @@ export default function Profile() {
           text={{
             value: "DIY Yogyakarta, Indonesia",
             width: 5,
-            color: "black",
+            color: systemState.theme === "colorfun" ? "#000" : "#fff",
             align: "center",
           }}
           position="0 0.2 0.2"
@@ -353,7 +372,7 @@ export default function Profile() {
             text={{
               value: "Keahlian",
               width: 5,
-              color: "black",
+              color: systemState.theme === "colorfun" ? "#000" : "#fff",
               align: "center",
             }}
             position="0 -0.8 0"
@@ -393,7 +412,7 @@ export default function Profile() {
             text={{
               value: "Pengalaman",
               width: 5,
-              color: "black",
+              color: systemState.theme === "colorfun" ? "#000" : "#fff",
               align: "center",
             }}
             position="0 -0.8 0"
@@ -433,7 +452,7 @@ export default function Profile() {
             text={{
               value: "Pendidikan",
               width: 5,
-              color: "black",
+              color: systemState.theme === "colorfun" ? "#000" : "#fff",
               align: "center",
             }}
             position="0 -0.8 0"

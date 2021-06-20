@@ -2,7 +2,8 @@ import { h } from "preact";
 import { Entity } from "aframe-react";
 import { circularFriendPositionFrom } from "../utils/calculation";
 import { clickProfile } from "../store/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { randomColor } from "../utils/colors";
 
 import avatar from "../assets/icons/avatar-s.png";
 import button from "../assets/gltf/buttonRec.gltf";
@@ -10,6 +11,7 @@ import iconArrow from "../assets/icons/arrow.png";
 
 export default function FriendList() {
   const dispatch = useDispatch();
+  const systemState = useSelector((state) => state.system);
 
   const createCards = () => {
     let childrens = [];
@@ -33,6 +35,9 @@ export default function FriendList() {
               height: 1,
               width: 2,
               depth: 0.1,
+            }}
+            material={{
+              color: systemState.theme === "colorfun" ? randomColor() : "#fff",
             }}
             position={pos}
             animation__mouseenter={{

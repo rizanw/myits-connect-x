@@ -57,7 +57,7 @@ export default function SettingScreen() {
           height="0.4"
           width="1.6"
           depth="0.020"
-          color={settingState.isGeneralActive ? "#3A337D" : "#fff"}
+          color={settingState.isGeneralActive ? "#013880" : "#fff"}
           events={{
             click: () => {
               dispatch(clickGeneral());
@@ -81,7 +81,7 @@ export default function SettingScreen() {
           height="0.4"
           width="1.6"
           depth="0.020"
-          color={settingState.isThemeActive ? "#3A337D" : "#fff"}
+          color={settingState.isThemeActive ? "#013880" : "#fff"}
           events={{
             click: () => {
               dispatch(clickTheme());
@@ -163,7 +163,7 @@ export default function SettingScreen() {
                 depth: 0.02,
               }}
               material={{
-                color: systemState.language === "id" ? "#3A337D" : "#fff",
+                color: systemState.language === "id" ? "#013880" : "#fff",
               }}
               position="0.03 0.55 0.02"
               events={{
@@ -191,7 +191,7 @@ export default function SettingScreen() {
                 depth: 0.02,
               }}
               material={{
-                color: systemState.language === "en" ? "#3A337D" : "#fff",
+                color: systemState.language === "en" ? "#013880" : "#fff",
               }}
               position="1.13 0.55 0.02"
               events={{
@@ -237,7 +237,7 @@ export default function SettingScreen() {
               position="-0.3 -0.3 0.02"
               event-set__mouseenter={{
                 material: {
-                  color: "#3A337D",
+                  color: "#013880",
                 },
               }}
               event-set__mouseleave="material.color: #fff"
@@ -278,7 +278,7 @@ export default function SettingScreen() {
               position="0.6 -0.3 0.02"
               event-set__mouseenter={{
                 material: {
-                  color: "#3A337D",
+                  color: "#013880",
                 },
               }}
               event-set__mouseleave="material.color: #fff"
@@ -321,7 +321,7 @@ export default function SettingScreen() {
               }}
               position="0 0.65 0.02"
               material={{
-                color: "#3A337D",
+                color: "#013880",
                 opacity: "0.9",
               }}
               event-set__enter={{
@@ -359,7 +359,7 @@ export default function SettingScreen() {
                     depth: 0.02,
                   }}
                   material={{
-                    color: "#3A337D",
+                    color: "#013880",
                     opacity: "0.9",
                   }}
                   position="0 -0.35 0"
@@ -422,7 +422,7 @@ export default function SettingScreen() {
                     depth: 0.02,
                   }}
                   material={{
-                    color: "#3A337D",
+                    color: "#013880",
                     opacity: "0.9",
                   }}
                   position="0 -0.35 0"
