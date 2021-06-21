@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
-import { useDispatch } from "react-redux";
-import { login } from "../store/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../store/auth/actions";
 
 //assets import
 import "../styles/LoginDialog.css";
@@ -10,6 +10,9 @@ import { getNews } from "../store/news/actions";
 
 export default function LoginDialog() {
   const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
+
+  console.log(authState);
 
   const [emailField, setEmailField] = useState("");
   const [passwordField, setPasswordField] = useState("");
@@ -28,9 +31,11 @@ export default function LoginDialog() {
   };
 
   const onSubmit = (e) => {
-    console.log("login");
-    dispatch(getNews());
-    dispatch(login(emailField));
+    const body = {
+      email: emailField,
+      password: passwordField,
+    };
+    dispatch(login(body));
     e.preventDefault();
   };
 

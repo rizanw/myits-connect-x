@@ -2,7 +2,6 @@ import { h } from "preact";
 import { Entity } from "aframe-react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "preact/hooks";
-import "../assets/css/fonts.css";
 
 export default function NewsView() {
   const navigationState = useSelector((state) => state.navigation);
