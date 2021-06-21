@@ -1,26 +1,35 @@
 import { h } from "preact";
 import { Entity } from "aframe-react";
 import { useDispatch, useSelector } from "react-redux";
-import parse from "html-react-parser";
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
+import "../assets/css/fonts.css";
 
 export default function NewsView() {
   const navigationState = useSelector((state) => state.navigation);
+  const [firstPage, setFirstPage] = useState([]);
+  const [secondPage, setSecondPage] = useState([]);
 
   useEffect(() => {
-    const str = navigationState.news.content.replace(/<[^>]+>/g, "");
-    const chunks = str.substring(0, 9000)
-
-    console.log(chunks);
+    let str = navigationState.news.content.replace(
+      /(<div)(.*?)(<\/div>)/gms,
+      ""
+    );
+    str = str.replace(/<[^>]+>/g, "");
+    let chunks = str.split(/\n/);
+    chunks = chunks.filter(function (el) {
+      return el != "";
+    });
+    setFirstPage(chunks.slice(0, 6));
+    setSecondPage(chunks.slice(6));
   }, []);
 
   return (
     <Entity>
       <Entity
-        primitive="a-box"
-        height="4"
-        width="4.5"
-        depth="0.1"
+        geometry="primitive: box; height: 4; width: 4.5; depth: 0.1"
+        material={{
+          color: "#fbfbf8",
+        }}
         position="-2.25 2 -4"
         rotation="0 10 0"
       >
@@ -28,7 +37,7 @@ export default function NewsView() {
           <div
             style={{
               width: "1024px",
-              height: "768px",
+              height: "870px",
               fontSize: "14pt",
             }}
           >
@@ -45,16 +54,26 @@ export default function NewsView() {
               {navigationState.news.title}
             </h1>
             <div>
-              {parse(navigationState.news.content.replace(/<[^>]+>/g, ""))}
+              {firstPage.map((item) => (
+                <p
+                  style={{
+                    fontFamily: "Georgia",
+                    fontSize: "16pt",
+                    textAlign: "justify",
+                  }}
+                >
+                  {item}
+                </p>
+              ))}
             </div>
           </div>
         </Entity>
       </Entity>
       <Entity
-        primitive="a-box"
-        height="4"
-        width="4.5"
-        depth="0.1"
+        geometry="primitive: box; height: 4; width: 4.5; depth: 0.1"
+        material={{
+          color: "#fbfbf8",
+        }}
         position="2.25 2 -4"
         rotation="0 -10 0"
       >
@@ -62,7 +81,7 @@ export default function NewsView() {
           <div
             style={{
               width: "1024px",
-              height: "768px",
+              height: "870px",
               fontSize: "14pt",
             }}
           >
@@ -76,7 +95,17 @@ export default function NewsView() {
               halaman 2
             </p>
             <div>
-              {parse(navigationState.news.content.replace(/<[^>]+>/g, ""))}
+              {secondPage.map((item) => (
+                <p
+                  style={{
+                    fontFamily: "Georgia",
+                    textAlign: "justify",
+                    fontSize: "16pt",
+                  }}
+                >
+                  {item}
+                </p>
+              ))}
             </div>
           </div>
         </Entity>
