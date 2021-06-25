@@ -7,6 +7,7 @@ import {
   clickPostList,
 } from "../store/navigation";
 import { getNews } from "../store/news/actions";
+import { getPosts } from "../store/post/actions";
 
 import iconPosts from "../assets/gltf/iconPosts.gltf";
 import iconNews from "../assets/gltf/iconNews.gltf";
@@ -35,6 +36,7 @@ export default function MenuMain() {
         }}
         events={{
           click: () => {
+            dispatch(getPosts());
             dispatch(clickPostList());
           },
         }}

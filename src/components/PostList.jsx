@@ -2,15 +2,26 @@ import { h } from "preact";
 import { Entity } from "aframe-react";
 import { useDispatch, useSelector } from "react-redux";
 import { circularPositionFrom } from "../utils/calculation";
+import Loading from "./Loading";
+
+import avatar from "../assets/icons/avatar-s.png";
+import like from "../assets/icons/like.png";
+import liked from "../assets/icons/liked.png";
+import comment from "../assets/icons/comment.png";
 
 export default function PostList() {
   const dispatch = useDispatch();
   const systemState = useSelector((state) => state.system);
+  const postState = useSelector((state) => state.post);
+  const authState = useSelector((state) => state.auth);
+
+  console.log(authState);
 
   const createCards = () => {
+    let posts = postState.posts;
     let childrens = [];
-    for (let i = 0; i < 9; i++) {
-      let pos = circularPositionFrom(i, 9);
+    for (let i = 0; i < posts.length; i++) {
+      let pos = circularPositionFrom(i, posts.length);
       childrens.push(
         <Entity
           animation={{
@@ -47,20 +58,68 @@ export default function PostList() {
               dur: 1000,
             }}
           >
+            <Entity position="-1.5 0.58 0.13">
+              <Entity primitive="a-image" src={avatar} scale="0.4 0.4 0.4" />
+              <Entity
+                text={{
+                  value: posts[i].author.name,
+                  width: 3,
+                  color: "black",
+                  anchor: "left",
+                }}
+                position="0.4 0.1 0.0"
+              />
+              <Entity
+                text={{
+                  value: `${posts[i].author.batch} - ${posts[i].author.department}`,
+                  width: 2.5,
+                  color: "black",
+                  anchor: "left",
+                }}
+                position="0.4 -0.1 0.0"
+              />
+            </Entity>
             <Entity
               text={{
-                value: "Judul konten postingan di sini",
-                width: 4,
+                value: `${posts[i].content.substring(0, 152)} ${
+                  posts[i].content.length >= 152 ? "..." : ""
+                }`,
+                width: 3.5,
                 color: "black",
                 align: "center",
               }}
-              position="0.0 -0.75 0.1"
+              position="0.0 -0.1 0.1"
             />
-            <Entity
-              primitive="a-image"
-              position="0 0.25 0.12"
-              scale="4 1.5 0"
-            />
+            <Entity position="0.0 -0.7 0.11">
+              <Entity id="like" position="-1.0 0.0 0.0">
+                {posts[i].likes.find((id) => id === authState.id) ? (
+                  <Entity primitive="a-image" src={liked} scale="0.2 0.2 0.2" />
+                ) : (
+                  <Entity primitive="a-image" src={like} scale="0.2 0.2 0.2" />
+                )}
+                <Entity
+                  text={{
+                    value: posts[i].likes.length + " Suka",
+                    width: 3,
+                    color: "black",
+                    anchor: "left",
+                  }}
+                  position="0.18 0.0 0.0"
+                />
+              </Entity>
+              <Entity id="comment" position="0.0 0.0 0.0">
+                <Entity primitive="a-image" src={comment} scale="0.2 0.2 0.2" />
+                <Entity
+                  text={{
+                    value: posts[i].comments.length + " Komentar",
+                    width: 3,
+                    color: "black",
+                    anchor: "left",
+                  }}
+                  position="0.18 0.0 0.0"
+                />
+              </Entity>
+            </Entity>
           </Entity>
         </Entity>
       );
@@ -68,5 +127,7 @@ export default function PostList() {
     return childrens;
   };
 
-  return <Entity id="postList">{createCards()}</Entity>;
+  if (postState.posts.length)
+    return <Entity id="postList">{createCards()}</Entity>;
+  else return <Loading />;
 }

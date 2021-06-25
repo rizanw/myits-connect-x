@@ -16,8 +16,6 @@ export default function NewsList() {
     dispatch(getNews());
   }, []);
 
-  console.log(newsState.posts);
-
   const createCards = () => {
     let news = newsState.posts;
     let childrens = [];
