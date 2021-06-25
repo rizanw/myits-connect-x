@@ -14,6 +14,7 @@ import iconCompass from "../assets/icons/compass.png";
 import iconProfile from "../assets/icons/avatar.png";
 import iconSettings from "../assets/icons/settings.png";
 import iconNotification from "../assets/icons/bell.png";
+
 import {
   clickExplore,
   resetNavigation,
@@ -21,6 +22,8 @@ import {
   clickProfile,
   clickSettingScreen,
 } from "../store/navigation";
+import { getProfile } from "../store/profile/actions";
+const persistedData = JSON.parse(localStorage.getItem("user"));
 
 export default function Navigation() {
   const [time, setTime] = useState("");
@@ -122,9 +125,11 @@ export default function Navigation() {
         }}
         events={{
           click: () => {
-            navigationState.isProfileActive
-              ? dispatch(resetNavigation())
-              : dispatch(clickProfile());
+            if (navigationState.isProfileActive) dispatch(resetNavigation());
+            else {
+              dispatch(getProfile(persistedData ? persistedData.id : ""));
+              dispatch(clickProfile());
+            }
           },
         }}
       >
