@@ -17,14 +17,15 @@
     "aframe-htmlembed-component": "^1.0.0",
     "aframe-look-at-component": "^1.0.0",
     "aframe-react": "^4.4.0",
+    "axios": "^0.21.1",
+    "moment": "^2.29.1",
     "preact": "^10.5.13",
     "react-redux": "^7.2.4",
-    "redaxios": "^0.4.1",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@prefresh/snowpack": "^3.0.0",
+    "@prefresh/snowpack": "^3.1.2",
     "@snowpack/plugin-dotenv": "^2.1.0",
     "@snowpack/web-test-runner-plugin": "^0.2.2",
     "@testing-library/preact": "^2.0.1",

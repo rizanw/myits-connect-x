@@ -3,6 +3,10 @@ import { Entity } from "aframe-react";
 import { useDispatch, useSelector } from "react-redux";
 import { circularPositionFrom } from "../utils/calculation";
 import Loading from "./Loading";
+import moment from "moment";
+import "moment/locale/id";
+import { setPost } from "../store/post";
+import { clickPostView } from "../store/navigation";
 
 import avatar from "../assets/icons/avatar-s.png";
 import like from "../assets/icons/like.png";
@@ -14,8 +18,6 @@ export default function PostList() {
   const systemState = useSelector((state) => state.system);
   const postState = useSelector((state) => state.post);
   const authState = useSelector((state) => state.auth);
-
-  console.log(authState);
 
   const createCards = () => {
     let posts = postState.posts;
@@ -57,6 +59,12 @@ export default function PostList() {
               startEvents: "mouseleave",
               dur: 1000,
             }}
+            events={{
+              click: () => {
+                dispatch(setPost(posts[i]));
+                dispatch(clickPostView());
+              },
+            }}
           >
             <Entity position="-1.5 0.58 0.13">
               <Entity primitive="a-image" src={avatar} scale="0.4 0.4 0.4" />
@@ -67,16 +75,25 @@ export default function PostList() {
                   color: "black",
                   anchor: "left",
                 }}
-                position="0.4 0.1 0.0"
+                position="0.4 0.14 0.0"
               />
               <Entity
                 text={{
                   value: `${posts[i].author.batch} - ${posts[i].author.department}`,
-                  width: 2.5,
+                  width: 2.2,
                   color: "black",
                   anchor: "left",
                 }}
-                position="0.4 -0.1 0.0"
+                position="0.4 -0.04 0.0"
+              />
+              <Entity
+                text={{
+                  value: moment(posts[i].createdAt).locale("id").format("LLL"),
+                  width: 2.2,
+                  color: "black",
+                  anchor: "left",
+                }}
+                position="0.4 -0.18 0.0"
               />
             </Entity>
             <Entity

@@ -13,9 +13,9 @@ function degrees_to_radians(degrees) {
   return degrees * (pi / 180);
 }
 
-export function circularPositionFrom(index, total, radius = 6) {
-  let quotient = Math.floor(total / 2);
-  let remain = total % 2;
+export function circularPositionFrom(index, total, row = 2, radius = 6) {
+  let quotient = Math.floor(total / row);
+  let remain = total % row;
   let y = 0;
   var degree = 360 / quotient;
   if (index > quotient) {

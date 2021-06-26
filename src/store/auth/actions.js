@@ -1,12 +1,16 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "redaxios";
-
-// const HOST = "http://localhost:5000/api/v1";
-const HOST = "https://myits-server.herokuapp.com/api/v1";
+import { request } from "../../utils/request";
 
 export const login = createAsyncThunk("user/LOGIN", async (body) => {
-  const response = await axios.post(HOST + "/login", body);
+  const response = await request.post("/login", body);
   const data = response.data.data;
-  localStorage.setItem("user", JSON.stringify(data));
+  localStorage.setItem("token", data.accessToken);
   return data;
+});
+
+export const getUser = createAsyncThunk("user/GetProfile", async () => {
+  const response = await request.get("/user");
+  const data = response.data;
+  console.log(data.data);
+  return data.data;
 });

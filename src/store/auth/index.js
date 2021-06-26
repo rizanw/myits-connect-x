@@ -1,14 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login } from "./actions";
-
-const persistedData = JSON.parse(localStorage.getItem("user"));
+import { getUser, login } from "./actions";
 
 const initialState = {
-  id: persistedData ? persistedData.id : "",
-  name: persistedData ? persistedData.name : "",
-  email: persistedData ? persistedData.email : "",
-  accessToken: persistedData ? persistedData.accessToken : "",
-  errorMessage: "",
+  id: "",
+  name: "",
+  position: "",
+  accessToken: localStorage.getItem("token"),
   isLoading: false,
 };
 
@@ -16,10 +13,9 @@ export const auth = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    getUser: (state) => state,
     logout: (state, action) => {
       localStorage.clear();
-      return { ...initialState };
+      return initialState;
     },
   },
   extraReducers: (builder) => {
@@ -28,20 +24,20 @@ export const auth = createSlice({
         ...state,
         isLoading: true,
       }))
-      .addCase(login.fulfilled, (state, action) => {
-        console.log("payload", action.payload);
-        return {
-          ...state,
-          ...action.payload,
-          errorMessage: action.payload.message,
-          isLoggedIn: true,
-          isLoading: false,
-        };
-      })
-      .addCase(login.rejected, (state, action) => ({
+      .addCase(login.fulfilled, (state, action) => ({
         ...state,
+        ...action.payload,
         isLoading: false,
-        isError: true,
+      }));
+    builder
+      .addCase(getUser.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
+      .addCase(getUser.fulfilled, (state, action) => ({
+        ...state,
+        ...action.payload,
+        isLoading: false,
       }));
   },
 });

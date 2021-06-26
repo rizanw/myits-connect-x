@@ -13,6 +13,7 @@ const initialState = {
     content: "",
   },
   isPostsListActive: false,
+  isPostsViewActive: false,
   isFriendListActive: false,
 };
 
@@ -45,6 +46,10 @@ export const navigation = createSlice({
       ...initialState,
       isPostsListActive: true,
     }),
+    clickPostView: (state) => ({
+      ...initialState,
+      isPostsViewActive: true,
+    }),
     clickSettingScreen: (state) => ({
       ...initialState,
       isSettingsActive: true,
@@ -64,6 +69,7 @@ export const {
   clickNewsList,
   clickNewsDetail,
   clickPostList,
+  clickPostView,
   resetNavigation,
   clickSettingScreen,
   clickFriendList,
