@@ -2,6 +2,14 @@ import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { Entity } from "aframe-react";
+import {
+  clickExplore,
+  resetNavigation,
+  clickMenu,
+  clickProfile,
+  clickSettingScreen,
+} from "../store/navigation";
+import { getProfile } from "../store/profile/actions";
 
 import navbar from "../assets/gltf/navBar.gltf";
 import button from "../assets/gltf/buttonRec.gltf";
@@ -15,20 +23,11 @@ import iconProfile from "../assets/icons/avatar.png";
 import iconSettings from "../assets/icons/settings.png";
 import iconNotification from "../assets/icons/bell.png";
 
-import {
-  clickExplore,
-  resetNavigation,
-  clickMenu,
-  clickProfile,
-  clickSettingScreen,
-} from "../store/navigation";
-import { getProfile } from "../store/profile/actions";
-const persistedData = JSON.parse(localStorage.getItem("user"));
-
 export default function Navigation() {
   const [time, setTime] = useState("");
   const dispatch = useDispatch();
   const navigationState = useSelector((state) => state.navigation);
+  const authState = useSelector((state) => state.auth);
 
   useEffect(() => {
     setInterval(clock, 1000);
@@ -127,7 +126,7 @@ export default function Navigation() {
           click: () => {
             if (navigationState.isProfileActive) dispatch(resetNavigation());
             else {
-              dispatch(getProfile(persistedData ? persistedData.id : ""));
+              dispatch(getProfile(authState.id));
               dispatch(clickProfile());
             }
           },
