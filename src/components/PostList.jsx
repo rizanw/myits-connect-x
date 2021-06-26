@@ -8,11 +8,6 @@ import "moment/locale/id";
 import { setPost } from "../store/post";
 import { clickPostView } from "../store/navigation";
 
-import avatar from "../assets/icons/avatar-s.png";
-import like from "../assets/icons/like.png";
-import liked from "../assets/icons/liked.png";
-import comment from "../assets/icons/comment.png";
-
 export default function PostList() {
   const dispatch = useDispatch();
   const systemState = useSelector((state) => state.system);
@@ -67,7 +62,7 @@ export default function PostList() {
             }}
           >
             <Entity position="-1.5 0.58 0.13">
-              <Entity primitive="a-image" src={avatar} scale="0.4 0.4 0.4" />
+              <Entity primitive="a-image" src="#iconAvatar" scale="0.4 0.4 0.4" />
               <Entity
                 text={{
                   value: posts[i].author.name,
@@ -110,9 +105,9 @@ export default function PostList() {
             <Entity position="0.0 -0.7 0.11">
               <Entity id="like" position="-1.0 0.0 0.0">
                 {posts[i].likes.find((id) => id === authState.id) ? (
-                  <Entity primitive="a-image" src={liked} scale="0.2 0.2 0.2" />
+                  <Entity primitive="a-image" src="#iconLiked" scale="0.2 0.2 0.2" />
                 ) : (
-                  <Entity primitive="a-image" src={like} scale="0.2 0.2 0.2" />
+                  <Entity primitive="a-image" src="#iconLike" scale="0.2 0.2 0.2" />
                 )}
                 <Entity
                   text={{
@@ -125,7 +120,7 @@ export default function PostList() {
                 />
               </Entity>
               <Entity id="comment" position="0.0 0.0 0.0">
-                <Entity primitive="a-image" src={comment} scale="0.2 0.2 0.2" />
+                <Entity primitive="a-image" src="#iconComment" scale="0.2 0.2 0.2" />
                 <Entity
                   text={{
                     value: posts[i].comments.length + " Komentar",

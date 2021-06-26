@@ -14,13 +14,16 @@ import MenuMain from "./components/MenuMain";
 import Profile from "./components/Profile";
 import SettingScreen from "./components/SettingScreen";
 import FriendList from "./components/FriendList";
+import Assets from "./components/Assets";
 
 export default function VRApp() {
   const navigationState = useSelector((state) => state.navigation);
   const systemState = useSelector((state) => state.system);
+  const authState = useSelector((state) => state.auth);
 
   return (
-    <Scene vr-mode-ui="enabled: false">
+    <Scene stats vr-mode-ui="enabled: false">
+      <Assets />
       <Entity
         src={systemState.sky.background}
         primitive="a-sky"
@@ -39,7 +42,7 @@ export default function VRApp() {
       {navigationState.isProfileActive ? <Profile /> : null}
       {navigationState.isSettingsActive ? <SettingScreen /> : null}
       {navigationState.isFriendListActive ? <FriendList /> : null}
-      <Navigation />
+      {authState.accessToken ? <Navigation /> : null}
     </Scene>
   );
 }

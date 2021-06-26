@@ -4,18 +4,11 @@ import { useState } from "preact/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { circularPositionFrom } from "../utils/calculation";
-
-import avatar from "../assets/icons/avatar-s.png";
-import like from "../assets/icons/like.png";
-import liked from "../assets/icons/liked.png";
-import comment from "../assets/icons/comment.png";
 import { likePost, unlikePost } from "../store/post/actions";
 
 export default function PostView() {
   const dispatch = useDispatch();
   const systemState = useSelector((state) => state.system);
-  const settingState = useSelector((state) => state.setting);
-
   const authState = useSelector((state) => state.auth);
   const postState = useSelector((state) => state.post);
   const [isCommentShowed, setIsCommentShowed] = useState(false);
@@ -70,7 +63,11 @@ export default function PostView() {
             }}
           >
             <Entity position="1.65 0.45 -0.06" rotation="0 180 0">
-              <Entity primitive="a-image" src={avatar} scale="0.3 0.3 0.3" />
+              <Entity
+                primitive="a-image"
+                src="#iconAvatar"
+                scale="0.3 0.3 0.3"
+              />
               <Entity
                 text={{
                   value: comments[i].user.name,
@@ -132,7 +129,7 @@ export default function PostView() {
         position="0.0 2.6 -4.0"
       >
         <Entity id="post-info" position="-2.3 0.85 0.1">
-          <Entity primitive="a-image" src={avatar} scale="0.4 0.4 0.4" />
+          <Entity primitive="a-image" src="#iconAvatar" scale="0.4 0.4 0.4" />
           <Entity
             text={{
               value: postState.post.author.name,
@@ -189,18 +186,18 @@ export default function PostView() {
           }}
         >
           {postState.post.likes.find((user) => {
-            console.log("user",user);
+            console.log("user", user);
           }) ? (
             <Entity
               primitive="a-image"
-              src={liked}
+              src="#iconLiked"
               scale="0.15 0.15 0.15"
               position="-0.4 0.0 0.0"
             />
           ) : (
             <Entity
               primitive="a-image"
-              src={like}
+              src="#iconLike"
               scale="0.15 0.15 0.15"
               position="-0.4 0.0 0.0"
             />
@@ -239,7 +236,7 @@ export default function PostView() {
         >
           <Entity
             primitive="a-image"
-            src={comment}
+            src="#iconComment"
             scale="0.15 0.15 0.15"
             position="-0.4 0.0 0.0"
           />

@@ -79,6 +79,12 @@ export const navigation = createSlice({
       isExperienceActive: false,
       isEducationActive: true,
     }),
+    resetProfileNavigation: (state) => ({
+      ...state,
+      isSkillActive: false,
+      isEducationActive: false,
+      isExperienceActive: false,
+    }),
     clickSettingGeneral: (state) => ({
       ...state,
       isSettingGeneralActive: true,
@@ -106,6 +112,7 @@ export const {
   clickSkill,
   clickExperience,
   clickEducation,
+  resetProfileNavigation,
   clickSettingGeneral,
   clickSettingTheme,
 } = navigation.actions;

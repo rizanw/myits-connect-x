@@ -16,13 +16,6 @@ import button from "../assets/gltf/buttonRec.gltf";
 import buttonCircle from "../assets/gltf/buttonCir.gltf";
 import buttonSmall from "../assets/gltf/buttonRecSmall.gltf";
 
-//icons
-import iconMenu from "../assets/icons/menu.png";
-import iconCompass from "../assets/icons/compass.png";
-import iconProfile from "../assets/icons/avatar.png";
-import iconSettings from "../assets/icons/settings.png";
-import iconNotification from "../assets/icons/bell.png";
-
 export default function Navigation() {
   const [time, setTime] = useState("");
   const dispatch = useDispatch();
@@ -87,7 +80,7 @@ export default function Navigation() {
         <Entity
           geometry="primitive: plane; height: 1.0; width: 1.0"
           color="white"
-          material={{ src: iconSettings, alphaTest: 0.5 }}
+          material={{ src: "#iconSettings", alphaTest: 0.5 }}
           rotation="180 0 0"
           position="0 0 -0.12"
           scale="0.45 0.45 0.45"
@@ -135,7 +128,7 @@ export default function Navigation() {
         <Entity
           geometry="primitive: plane; height: 1.0; width: 1.0"
           color="white"
-          material={{ src: iconProfile, alphaTest: 0.5 }}
+          material={{ src: "#iconProfile", alphaTest: 0.5 }}
           rotation="180 0 -90"
           position="0 0 -0.12"
           scale="0.7 0.7 0.7"
@@ -176,7 +169,7 @@ export default function Navigation() {
         <Entity
           geometry="primitive: plane; height: 1.0; width: 1.0"
           color="white"
-          material={{ src: iconMenu, alphaTest: 0.5 }}
+          material={{ src: "#iconMenu", alphaTest: 0.5 }}
           rotation="180 0 0"
           position="0 0 -0.12"
           scale="0.7 0.7 0.7"
@@ -217,7 +210,7 @@ export default function Navigation() {
         <Entity
           geometry="primitive: plane; height: 1.0; width: 1.0"
           color="white"
-          material={{ src: iconCompass, alphaTest: 0.5 }}
+          material={{ src: "#iconCompass", alphaTest: 0.5 }}
           rotation="180 0 0"
           position="0 0 -0.12"
           scale="0.7 0.7 0.7"
@@ -256,7 +249,7 @@ export default function Navigation() {
         <Entity
           geometry="primitive: plane; height: 1.0; width: 1.0"
           color="white"
-          material={{ src: iconNotification, alphaTest: 0.5 }}
+          material={{ src: "#iconNotification", alphaTest: 0.5 }}
           rotation="180 0 -90"
           position="0 0 -0.12"
           scale="0.7 0.7 0.7"

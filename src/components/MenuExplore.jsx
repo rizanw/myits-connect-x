@@ -4,24 +4,15 @@ import { circularPositionFromIndex } from "../utils/calculation";
 import { useDispatch } from "react-redux";
 import { changeBackgroundSky } from "../store/system";
 
-import baak from "../assets/environtment/360-baak-front.jpg";
-import graha from "../assets/environtment/360-graha-front.jpg";
-import bundaran from "../assets/environtment/360-bundaran.jpg";
-import lingpus from "../assets/environtment/360-lingpus-side.jpg";
-import manarul from "../assets/environtment/360-manarul-indoor.jpg";
-import fasor from "../assets/environtment/360-fasor-lapangan.jpg";
-import tamanAlumni from "../assets/environtment/360-taman-alumni.jpg";
-import perpustakan from "../assets/environtment/360-perpustakaan-front.jpg";
-
-const location = [
-  baak,
-  graha,
-  bundaran,
-  lingpus,
-  manarul,
-  fasor,
-  tamanAlumni,
-  perpustakan,
+const locationId = [
+  "#baakEnvirontment",
+  "#grahaEnvirontment",
+  "#bundaranItsEnvirontment",
+  "#lingpusEnvirontment",
+  "#manarulEnvirontment",
+  "#fasorEnvirontment",
+  "#tamanAlumniEnvirontment",
+  "#perpustakaanEnvirontment",
 ];
 
 const locationName = [
@@ -69,7 +60,7 @@ export default function MenuExplore() {
           <Entity
             class="clickable"
             geometry="primitive: sphere; radius: 0.6"
-            material={{ src: location[i] }}
+            material={{ src: locationId[i] }}
             key={i}
             i={i}
             event-set__enter={{
@@ -111,7 +102,7 @@ export default function MenuExplore() {
               dur: 1000,
             }}
             events={{
-              click: () => dispatch(changeBackgroundSky(location[i])),
+              click: () => dispatch(changeBackgroundSky(locationId[i])),
             }}
           />
         </Entity>

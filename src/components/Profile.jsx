@@ -5,58 +5,14 @@ import {
   clickEducation,
   clickExperience,
   clickSkill,
-  resetNavigation,
+  resetProfileNavigation,
 } from "../store/navigation";
 import { clickFriendList } from "../store/navigation";
 import { randomColor } from "../utils/colors";
 import Loading from "./Loading";
 
-import avatar from "../assets/icons/avatar-s.png";
-import education from "../assets/icons/book.png";
-import plus from "../assets/icons/plus.png";
-import friendlist from "../assets/icons/group.png";
-import experience from "../assets/icons/suitcase.png";
-import skill from "../assets/icons/logical-thinking.png";
 import button from "../assets/gltf/buttonRec.gltf";
 import buttonSmall from "../assets/gltf/buttonRecSmall.gltf";
-
-const KEAHLIAN = [
-  { id: "321321", title: "React" },
-  { id: "232321", title: "WebXR" },
-  { id: "d32132", title: "a-frame" },
-  { id: "dsda23", title: "Mobile Developer" },
-  { id: "sada22", title: "Web Developer" },
-];
-
-const PENGALAMAN = [
-  {
-    id: "232321",
-    title: "WebXR Developer",
-    company: "Antonio Tech, Surabaya",
-    time: "Desember 2020 - Sekarang",
-  },
-  {
-    id: "dsda23",
-    title: "Mobile Developer",
-    company: "Antonio Tech, Surabaya",
-    time: "Mei 2019 - Oktober 2020",
-  },
-  {
-    id: "321321",
-    title: "UI/UX Designer Intern",
-    company: "Antonio Tech, Surabaya",
-    time: "Desember 2018 - Februari 2019",
-  },
-];
-
-const PENDIDIKAN = [
-  {
-    id: "232321",
-    title: "S-1 Teknik Informatika",
-    company: "Institut Teknologi Sepuluh Nopember",
-    time: "2016 - 2020",
-  },
-];
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -234,7 +190,7 @@ export default function Profile() {
           >
             <Entity
               primitive="a-image"
-              src={avatar}
+              src="#iconAvatar"
               rotation="90 180 0"
               position="0 0.16 0"
             />
@@ -259,7 +215,7 @@ export default function Profile() {
             >
               <Entity
                 primitive="a-image"
-                src={plus}
+                src="#iconPlus"
                 position="0 0 0.12"
                 scale="0.4 0.4 0.4"
               />
@@ -300,7 +256,7 @@ export default function Profile() {
           >
             <Entity
               primitive="a-image"
-              src={friendlist}
+              src="#iconFriendlist"
               position="0 0 0.12"
               scale="0.5 0.5 0.5"
             />
@@ -356,19 +312,19 @@ export default function Profile() {
             event-set__leave={{
               _event: "mouseleave",
               _target: "#skillTitle",
-              visible: profileState.isSkillActive ? "true" : "false",
+              visible: navigationState.isSkillActive ? "true" : "false",
             }}
             events={{
               click: () => {
-                profileState.isSkillActive
-                  ? dispatch(resetNavigation())
+                navigationState.isSkillActive
+                  ? dispatch(resetProfileNavigation())
                   : dispatch(clickSkill());
               },
             }}
           >
             <Entity
               primitive="a-image"
-              src={skill}
+              src="#iconSkill"
               position="0 0 0.12"
               scale="0.8 0.8 0.8"
             />
@@ -381,7 +337,7 @@ export default function Profile() {
                 align: "center",
               }}
               position="0 -0.8 0"
-              visible={profileState.isSkillActive}
+              visible={navigationState.isSkillActive}
             />
           </Entity>
           <Entity
@@ -396,19 +352,19 @@ export default function Profile() {
             event-set__leave={{
               _event: "mouseleave",
               _target: "#experienceTitle",
-              visible: profileState.isExperienceActive ? "true" : "false",
+              visible: navigationState.isExperienceActive ? "true" : "false",
             }}
             events={{
               click: () => {
-                profileState.isExperienceActive
-                  ? dispatch(resetNavigation())
+                navigationState.isExperienceActive
+                  ? dispatch(resetProfileNavigation())
                   : dispatch(clickExperience());
               },
             }}
           >
             <Entity
               primitive="a-image"
-              src={experience}
+              src="#iconExperience"
               position="0 0 0.12"
               scale="0.8 0.8 0.8"
             />
@@ -421,7 +377,7 @@ export default function Profile() {
                 align: "center",
               }}
               position="0 -0.8 0"
-              visible={profileState.isExperienceActive}
+              visible={navigationState.isExperienceActive}
             />
           </Entity>
           <Entity
@@ -436,19 +392,19 @@ export default function Profile() {
             event-set__leave={{
               _event: "mouseleave",
               _target: "#educationTitle",
-              visible: profileState.isEducationActive ? "true" : "false",
+              visible: navigationState.isEducationActive ? "true" : "false",
             }}
             events={{
               click: () => {
-                profileState.isEducationActive
-                  ? dispatch(resetNavigation())
+                navigationState.isEducationActive
+                  ? dispatch(resetProfileNavigation())
                   : dispatch(clickEducation());
               },
             }}
           >
             <Entity
               primitive="a-image"
-              src={education}
+              src="#iconEducation"
               position="0 0 0.12"
               scale="0.8 0.8 0.8"
             />
@@ -461,7 +417,7 @@ export default function Profile() {
                 align: "center",
               }}
               position="0 -0.8 0"
-              visible={profileState.isEducationActive}
+              visible={navigationState.isEducationActive}
             />
           </Entity>
         </Entity>
