@@ -3,7 +3,7 @@ import { Entity } from "aframe-react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/auth";
 import { resetNavigation } from "../store/navigation";
-import { clickGeneral, clickTheme } from "../store/setting";
+import { clickSettingGeneral, clickSettingTheme } from "../store/navigation";
 import {
   decreaseOrbitalSpeed,
   increaseOrbitaSpeed,
@@ -15,7 +15,7 @@ import iconArrow from "../assets/icons/arrow.png";
 
 export default function SettingScreen() {
   const dispatch = useDispatch();
-  const settingState = useSelector((state) => state.setting);
+  const navigationState = useSelector((state) => state.navigation);
   const systemState = useSelector((state) => state.system);
 
   return (
@@ -57,10 +57,10 @@ export default function SettingScreen() {
           height="0.4"
           width="1.6"
           depth="0.020"
-          color={settingState.isGeneralActive ? "#013880" : "#fff"}
+          color={navigationState.isSettingGeneralActive ? "#013880" : "#fff"}
           events={{
             click: () => {
-              dispatch(clickGeneral());
+              dispatch(clickSettingGeneral());
             },
           }}
         >
@@ -68,7 +68,7 @@ export default function SettingScreen() {
             text={{
               value: "Umum",
               width: 4,
-              color: settingState.isGeneralActive ? "white" : "black",
+              color: navigationState.isSettingGeneralActive ? "white" : "black",
               align: "center",
             }}
             position="0 0 0.01"
@@ -81,10 +81,10 @@ export default function SettingScreen() {
           height="0.4"
           width="1.6"
           depth="0.020"
-          color={settingState.isThemeActive ? "#013880" : "#fff"}
+          color={navigationState.isSettingThemeActive ? "#013880" : "#fff"}
           events={{
             click: () => {
-              dispatch(clickTheme());
+              dispatch(clickSettingTheme());
             },
           }}
         >
@@ -92,7 +92,7 @@ export default function SettingScreen() {
             text={{
               value: "Tema",
               width: 4,
-              color: settingState.isThemeActive ? "white" : "black",
+              color: navigationState.isSettingThemeActive ? "white" : "black",
               align: "center",
             }}
             position="0 0 0.01"
@@ -133,7 +133,7 @@ export default function SettingScreen() {
         </Entity>
       </Entity>
 
-      {settingState.isGeneralActive ? (
+      {navigationState.isSettingGeneralActive ? (
         <Entity id="general">
           <Entity
             text={{
@@ -299,7 +299,7 @@ export default function SettingScreen() {
         </Entity>
       ) : null}
 
-      {settingState.isThemeActive ? (
+      {navigationState.isSettingThemeActive ? (
         <Entity id="theme">
           <Entity
             text={{

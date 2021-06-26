@@ -5,9 +5,8 @@ import {
   clickEducation,
   clickExperience,
   clickSkill,
-  profileNavigation,
   resetNavigation,
-} from "../store/profile";
+} from "../store/navigation";
 import { clickFriendList } from "../store/navigation";
 import { randomColor } from "../utils/colors";
 import Loading from "./Loading";
@@ -61,7 +60,8 @@ const PENDIDIKAN = [
 
 export default function Profile() {
   const dispatch = useDispatch();
-  const profileState = useSelector((state) => state.profileNavigation);
+  const profileState = useSelector((state) => state.profile);
+  const navigationState = useSelector((state) => state.navigation);
   const systemState = useSelector((state) => state.system);
 
   const createEducationCards = () => {
@@ -465,9 +465,9 @@ export default function Profile() {
             />
           </Entity>
         </Entity>
-        {profileState.isSkillActive ? createSkillCards() : null}
-        {profileState.isExperienceActive ? createExperienceCards() : null}
-        {profileState.isEducationActive ? createEducationCards() : null}
+        {navigationState.isSkillActive ? createSkillCards() : null}
+        {navigationState.isExperienceActive ? createExperienceCards() : null}
+        {navigationState.isEducationActive ? createEducationCards() : null}
       </Entity>
     );
   else return <Loading />;

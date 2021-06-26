@@ -2,9 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getProfile } from "./actions";
 
 const initialState = {
-  isSkillActive: false,
-  isExperienceActive: false,
-  isEducationActive: false,
   skills: [],
   educations: [],
   experiences: [],
@@ -16,30 +13,10 @@ const initialState = {
   id: "",
 };
 
-export const profileNavigation = createSlice({
-  name: "profileNavigation",
+export const profile = createSlice({
+  name: "profile",
   initialState: initialState,
-  reducers: {
-    clickSkill: (state) => ({
-      ...state,
-      isExperienceActive: false,
-      isEducationActive: false,
-      isSkillActive: true,
-    }),
-    clickExperience: (state) => ({
-      ...state,
-      isSkillActive: false,
-      isEducationActive: false,
-      isExperienceActive: true,
-    }),
-    clickEducation: (state) => ({
-      ...state,
-      isSkillActive: false,
-      isExperienceActive: false,
-      isEducationActive: true,
-    }),
-    resetNavigation: (state) => initialState,
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getProfile.pending, (state, action) => ({
@@ -63,10 +40,3 @@ export const profileNavigation = createSlice({
       }));
   },
 });
-
-export const {
-  clickSkill,
-  clickExperience,
-  clickEducation,
-  resetNavigation,
-} = profileNavigation.actions;

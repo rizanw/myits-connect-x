@@ -4,15 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "preact/hooks";
 
 export default function NewsView() {
-  const navigationState = useSelector((state) => state.navigation);
+  const newsState = useSelector((state) => state.news);
   const [firstPage, setFirstPage] = useState([]);
   const [secondPage, setSecondPage] = useState([]);
 
   useEffect(() => {
-    let str = navigationState.news.content.replace(
-      /(<div)(.*?)(<\/div>)/gms,
-      ""
-    );
+    let str = newsState.post.content.replace(/(<div)(.*?)(<\/div>)/gms, "");
     str = str.replace(/<[^>]+>/g, "");
     let chunks = str.split(/\n/);
     chunks = chunks.filter(function (el) {
@@ -49,9 +46,7 @@ export default function NewsView() {
             >
               halaman 1
             </p>
-            <h1 style={{ marginBottom: "20px" }}>
-              {navigationState.news.title}
-            </h1>
+            <h1 style={{ marginBottom: "20px" }}>{newsState.post.title}</h1>
             <div>
               {firstPage.map((item) => (
                 <p

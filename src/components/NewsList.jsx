@@ -1,11 +1,12 @@
 import { h } from "preact";
 import { useEffect } from "preact/hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { Entity, Scene } from "aframe-react";
+import { Entity } from "aframe-react";
 import { circularPositionFrom } from "../utils/calculation";
 import { getNews } from "../store/news/actions";
 import Loading from "./Loading";
 import { clickNewsDetail } from "../store/navigation";
+import { setNews } from "../store/news";
 
 export default function NewsList() {
   const dispatch = useDispatch();
@@ -59,11 +60,12 @@ export default function NewsList() {
             events={{
               click: () => {
                 dispatch(
-                  clickNewsDetail({
+                  setNews({
                     title: news[i].title,
                     content: news[i].content,
                   })
                 );
+                dispatch(clickNewsDetail());
               },
             }}
           >
