@@ -6,13 +6,10 @@ import { login } from "../store/auth/actions";
 //assets import
 import "../styles/LoginDialog.css";
 import myITSlogo from "../assets/img/logo.png";
-import { getNews } from "../store/news/actions";
 
 export default function LoginDialog() {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
-
-  console.log(authState);
 
   const [emailField, setEmailField] = useState("");
   const [passwordField, setPasswordField] = useState("");
@@ -37,6 +34,9 @@ export default function LoginDialog() {
     };
     dispatch(login(body));
     e.preventDefault();
+    setTimeout(() => {
+      enterVRMode();
+    }, 1500);
   };
 
   return (
