@@ -29,12 +29,25 @@ import iconLiked from "../assets/icons/liked.png";
 import iconComment from "../assets/icons/comment.png";
 import iconArrow from "../assets/icons/arrow.png";
 
+// gltf
+import iconPostsGLTF from "../assets/gltf/iconPosts.gltf";
+import iconNewsGLTF from "../assets/gltf/iconNews.gltf";
+import iconCompassGLTF from "../assets/gltf/iconCompass.gltf";
+import buttonGLTF from "../assets/gltf/buttonRec.gltf";
+import buttonSmallGLTF from "../assets/gltf/buttonRecSmall.gltf";
+
 /*
  *  Asset management system.
  */
 export default function Assets() {
   return (
     <a-assets>
+      <a-asset-item id="iconPostsGLTF" src={iconPostsGLTF} />
+      <a-asset-item id="iconNewsGLTF" src={iconNewsGLTF} />
+      <a-asset-item id="iconCompassGLTF" src={iconCompassGLTF} />
+      <a-asset-item id="buttonGLTF" src={buttonGLTF} />
+      <a-asset-item id="buttonSmallGLTF" src={buttonSmallGLTF} />
+
       <img id="baakEnvirontment" src={baak} />
       <img id="grahaEnvirontment" src={graha} />
       <img id="bundaranItsEnvirontment" src={bundaran} />

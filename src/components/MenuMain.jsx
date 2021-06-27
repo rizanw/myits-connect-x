@@ -9,10 +9,6 @@ import {
 import { getNews } from "../store/news/actions";
 import { getPosts } from "../store/post/actions";
 
-import iconPosts from "../assets/gltf/iconPosts.gltf";
-import iconNews from "../assets/gltf/iconNews.gltf";
-import iconCompass from "../assets/gltf/iconCompass.gltf";
-
 export default function MenuMain() {
   const dispatch = useDispatch();
 
@@ -20,7 +16,7 @@ export default function MenuMain() {
     <Entity id="MenuMain">
       <Entity
         class="clickable"
-        gltf-model={iconPosts}
+        gltf-model="#iconPostsGLTF"
         position="-3 1.8 -6"
         rotation="90 90 90"
         animation={{
@@ -43,7 +39,7 @@ export default function MenuMain() {
       />
       <Entity
         class="clickable"
-        gltf-model={iconNews}
+        gltf-model="#iconNewsGLTF"
         position="0 1.8 -6"
         rotation="90 90 90"
         animation={{
@@ -67,7 +63,7 @@ export default function MenuMain() {
       />
       <Entity
         class="clickable"
-        gltf-model={iconCompass}
+        gltf-model="#iconCompassGLTF"
         position="3 1.8 -6"
         rotation="45 90 90"
         animation={{
