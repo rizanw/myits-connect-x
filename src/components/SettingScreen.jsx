@@ -11,8 +11,6 @@ import {
   selectTheme,
 } from "../store/system";
 
-import iconArrow from "../assets/icons/arrow.png";
-
 export default function SettingScreen() {
   const dispatch = useDispatch();
   const navigationState = useSelector((state) => state.navigation);
@@ -249,7 +247,7 @@ export default function SettingScreen() {
             >
               <Entity
                 geometry="primitive: plane; height: 1.0; width: 1.0"
-                material={{ src: iconArrow, alphaTest: 0.5 }}
+                material={{ src: "#iconArrow", alphaTest: 0.5 }}
                 position="0 0 0.01"
                 rotation="0 0 180"
                 scale="0.2 0.2 0.2"
@@ -290,7 +288,7 @@ export default function SettingScreen() {
             >
               <Entity
                 geometry="primitive: plane; height: 1.0; width: 1.0"
-                material={{ src: iconArrow, alphaTest: 0.5 }}
+                material={{ src: "#iconArrow", alphaTest: 0.5 }}
                 position="0 0 0.01"
                 scale="0.2 0.2 0.2"
               />

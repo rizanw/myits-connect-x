@@ -27,6 +27,7 @@ import iconSkill from "../assets/icons/logical-thinking.png";
 import iconLike from "../assets/icons/like.png";
 import iconLiked from "../assets/icons/liked.png";
 import iconComment from "../assets/icons/comment.png";
+import iconArrow from "../assets/icons/arrow.png";
 
 /*
  *  Asset management system.
@@ -57,6 +58,7 @@ export default function Assets() {
       <img id="iconLike" src={iconLike} />
       <img id="iconLiked" src={iconLiked} />
       <img id="iconComment" src={iconComment} />
+      <img id="iconArrow" src={iconArrow} />
     </a-assets>
   );
 }
