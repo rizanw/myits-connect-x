@@ -6,12 +6,14 @@ import { news } from "./news";
 import { post } from "./post";
 import { profile } from "./profile";
 import { system } from "./system";
+import { notification } from "./notification";
 
 const rootReducer = combineReducers({
   news: news.reducer,
   post: post.reducer,
   auth: auth.reducer,
   navigation: navigation.reducer,
+  notification: notification.reducer,
   profile: profile.reducer,
   system: system.reducer,
 });

@@ -1,37 +1,23 @@
 import { h } from "preact";
 import { Entity } from "aframe-react";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
+import { getNotif } from "../store/notification/actions";
+import moment from "moment";
 
-const NOTIFICATION = [
-  {
-    content: "blabla",
-    time: "20.20.2010",
-  },
-  {
-    content: "blabla",
-    time: "21.20.2010",
-  },
-  {
-    content: "blabla",
-    time: "22.20.2010",
-  },
-  {
-    content: "blabla",
-    time: "23.20.2010",
-  },
-  {
-    content: "blabla",
-    time: "24.20.2010",
-  },
-];
+const STATUS = ["Tidak ada notifikasi", "Memuat ..."];
 
 export default function Notifications() {
   const dispatch = useDispatch();
   const systemState = useSelector((state) => state.system);
+  const notifState = useSelector((state) => state.notification);
+
+  useEffect(() => {
+    dispatch(getNotif());
+  }, []);
 
   var startY = 0.5;
-  const contentLength = NOTIFICATION.length;
+  const contentLength = notifState.notifications.length;
   const [startIndex, setStartIndex] = useState(0);
 
   const scrollTo = (num) => {
@@ -60,22 +46,31 @@ export default function Notifications() {
           visible={visible}
         >
           <Entity
-            text={{
-              value: NOTIFICATION[i].content,
-              width: 2.5,
-              color: "black",
-              anchor: "left",
-            }}
-            position="-1.6 0.1 0.05"
+            primitive="a-image"
+            src="#iconAvatar"
+            scale="0.3 0.3 0.3"
+            position="-1.45 0 0.05"
           />
           <Entity
             text={{
-              value: NOTIFICATION[i].time,
-              width: 2.5,
+              value: notifState.notifications[i].content,
+              width: 3,
+              wrapCount: 45,
               color: "black",
               anchor: "left",
             }}
-            position="-1.6 -0.1 0.05"
+            position="-1.25 0.1 0.05"
+          />
+          <Entity
+            text={{
+              value: moment(notifState.notifications[i].createdAt)
+                .locale("id")
+                .format("LLL"),
+              width: 2.2,
+              color: "#444",
+              anchor: "left",
+            }}
+            position="-1.25 -0.1 0.05"
           />
         </Entity>
       );
@@ -106,6 +101,25 @@ export default function Notifications() {
           align: "center",
         }}
         position="-1.35 1.05 0.05"
+      />
+
+      <Entity
+        text={{
+          value: notifState.isLoading
+            ? STATUS[1]
+            : notifState.notifications.length === 0
+            ? STATUS[0]
+            : "",
+          width: 2,
+          color: "black",
+          align: "center",
+        }}
+        position="0.0 0.0 0.05"
+        visible={
+          notifState.notifications.length !== 0 || notifState.isLoading
+            ? true
+            : false
+        }
       />
 
       {createCards()}
