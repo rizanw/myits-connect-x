@@ -8,6 +8,7 @@ import {
   clickMenu,
   clickProfile,
   clickSettingScreen,
+  clickNotification,
 } from "../store/navigation";
 import { getProfile } from "../store/profile/actions";
 
@@ -244,6 +245,13 @@ export default function Navigation() {
           _event: "mouseleave",
           _target: "#notificationTitle",
           visible: "false",
+        }}
+        events={{
+          click: () => {
+            navigationState.isNotificationActive
+              ? dispatch(resetNavigation())
+              : dispatch(clickNotification());
+          },
         }}
       >
         <Entity

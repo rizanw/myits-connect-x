@@ -24,6 +24,10 @@ export const navigation = createSlice({
   name: "navigation",
   initialState: initialState,
   reducers: {
+    clickNotification: (state) => ({
+      ...initialState,
+      isNotificationActive: true,
+    }),
     clickProfile: (state) => ({
       ...initialState,
       isProfileActive: true,
@@ -100,6 +104,7 @@ export const navigation = createSlice({
 
 export const {
   clickExplore,
+  clickNotification,
   clickMenu,
   clickProfile,
   clickNewsList,

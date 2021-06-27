@@ -15,6 +15,7 @@ import Profile from "./components/Profile";
 import SettingScreen from "./components/SettingScreen";
 import FriendList from "./components/FriendList";
 import Assets from "./components/Assets";
+import Notifications from "./components/Notifications";
 
 export default function VRApp() {
   const navigationState = useSelector((state) => state.navigation);
@@ -42,6 +43,7 @@ export default function VRApp() {
       {navigationState.isProfileActive ? <Profile /> : null}
       {navigationState.isSettingsActive ? <SettingScreen /> : null}
       {navigationState.isFriendListActive ? <FriendList /> : null}
+      {navigationState.isNotificationActive ? <Notifications /> : null}
       {authState.accessToken ? <Navigation /> : null}
     </Scene>
   );
