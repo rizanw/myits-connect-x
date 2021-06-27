@@ -11,6 +11,8 @@ import {
   selectTheme,
 } from "../store/system";
 
+import button from "../assets/gltf/buttonRec.gltf";
+
 export default function SettingScreen() {
   const dispatch = useDispatch();
   const navigationState = useSelector((state) => state.navigation);
@@ -19,25 +21,27 @@ export default function SettingScreen() {
   return (
     <Entity
       id="settings"
-      primitive="a-plane"
-      position="0 1.5 -3.5"
-      height="3"
-      width="5"
+      primitive="a-box"
+      height="2.6"
+      width="3.8"
+      depth="0.05"
       material={{
-        color: "#ddd",
-        opacity: "0.9",
+        color: "#BCBCC0",
+        opacity: systemState.theme === "colorfun" ? "1.0" : "0.9",
       }}
+      position="0 1.2 -3.5"
+      rotation="-15 0 0"
     >
       <Entity
         primitive="a-box"
-        position="-1.6 -0.02 0"
         height="3"
-        width="1.8"
-        depth="0.020"
+        width="1.4"
+        depth="0.07"
         material={{
-          color: "#fff",
-          opacity: "0.9",
+          color: "#EBEBF0",
+          opacity: systemState.theme === "colorfun" ? "1.0" : "0.9",
         }}
+        position="-1.2 0.2 0.02"
       >
         <Entity
           text={{
@@ -46,16 +50,17 @@ export default function SettingScreen() {
             color: "black",
             align: "center",
           }}
-          position="0 1.25 0.01"
+          position="0 1.25 0.05"
         />
+
         <Entity
           class="clickable"
           primitive="a-box"
-          position="0 0.75 0.02"
+          position="-0.05 0.75 0.05"
           height="0.4"
-          width="1.6"
+          width="1.5"
           depth="0.020"
-          color={navigationState.isSettingGeneralActive ? "#013880" : "#fff"}
+          color={navigationState.isSettingGeneralActive ? "#013880" : "#E5E5EA"}
           events={{
             click: () => {
               dispatch(clickSettingGeneral());
@@ -66,20 +71,22 @@ export default function SettingScreen() {
             text={{
               value: "Umum",
               width: 4,
-              color: navigationState.isSettingGeneralActive ? "white" : "black",
+              color: navigationState.isSettingGeneralActive
+                ? "white"
+                : "#013880",
               align: "center",
             }}
-            position="0 0 0.01"
+            position="0 0 0.05"
           />
         </Entity>
         <Entity
           class="clickable"
           primitive="a-box"
-          position="0 0.15 0.02"
+          position="-0.05 0.15 0.05"
           height="0.4"
-          width="1.6"
+          width="1.5"
           depth="0.020"
-          color={navigationState.isSettingThemeActive ? "#013880" : "#fff"}
+          color={navigationState.isSettingThemeActive ? "#013880" : "#E5E5EA"}
           events={{
             click: () => {
               dispatch(clickSettingTheme());
@@ -90,7 +97,7 @@ export default function SettingScreen() {
             text={{
               value: "Tema",
               width: 4,
-              color: navigationState.isSettingThemeActive ? "white" : "black",
+              color: navigationState.isSettingThemeActive ? "white" : "#013880",
               align: "center",
             }}
             position="0 0 0.01"
@@ -99,13 +106,13 @@ export default function SettingScreen() {
         <Entity
           class="clickable"
           primitive="a-box"
-          position="0 -1.2 0.02"
+          position="-0.05 -1.2 0.05"
           height="0.4"
-          width="1.6"
+          width="1.5"
           depth="0.020"
           material={{
             color: "#f32013",
-            opacity: "0.9",
+            opacity: systemState.theme === "colorfun" ? "1.0" : "0.9",
           }}
           events={{
             click: () => {
@@ -140,7 +147,7 @@ export default function SettingScreen() {
               color: "black",
               align: "center",
             }}
-            position="-0.3 1.25 0.01"
+            position="-0.15 1.0 0.05"
           />
           <Entity id="language">
             <Entity
@@ -148,65 +155,68 @@ export default function SettingScreen() {
                 value: "Bahasa",
                 width: 3.2,
                 color: "black",
-                align: "center",
+                anchor: "left",
               }}
-              position="-0.3 0.85 0.01"
+              position="-0.4 0.7 0.05"
             />
-            <Entity
-              class="clickable"
-              geometry={{
-                primitive: "box",
-                height: 0.3,
-                width: 1.1,
-                depth: 0.02,
-              }}
-              material={{
-                color: systemState.language === "id" ? "#013880" : "#fff",
-              }}
-              position="0.03 0.55 0.02"
-              events={{
-                click: () => {
-                  dispatch(selectLanguage("id"));
-                },
-              }}
-            >
+
+            <Entity position="0.15 0.4 0.05">
               <Entity
-                text={{
-                  value: "Bahasa Indonesia",
-                  width: 2.5,
-                  color: systemState.language === "id" ? "white" : "black",
-                  align: "center",
+                class="clickable"
+                geometry={{
+                  primitive: "box",
+                  height: 0.3,
+                  width: 1.1,
+                  depth: 0.05,
                 }}
-                position="0 0 0.03"
-              />
-            </Entity>
-            <Entity
-              class="clickable"
-              geometry={{
-                primitive: "box",
-                height: 0.3,
-                width: 1.1,
-                depth: 0.02,
-              }}
-              material={{
-                color: systemState.language === "en" ? "#013880" : "#fff",
-              }}
-              position="1.13 0.55 0.02"
-              events={{
-                click: () => {
-                  dispatch(selectLanguage("en"));
-                },
-              }}
-            >
+                material={{
+                  color: systemState.language === "id" ? "#013880" : "#fff",
+                }}
+                position="0.03 0.0 0.0"
+                events={{
+                  click: () => {
+                    dispatch(selectLanguage("id"));
+                  },
+                }}
+              >
+                <Entity
+                  text={{
+                    value: "Bahasa Indonesia",
+                    width: 2.5,
+                    color: systemState.language === "id" ? "white" : "#013880",
+                    align: "center",
+                  }}
+                  position="0 0 0.03"
+                />
+              </Entity>
               <Entity
-                text={{
-                  value: "English",
-                  width: 2.5,
-                  color: systemState.language === "en" ? "white" : "black",
-                  align: "center",
+                class="clickable"
+                geometry={{
+                  primitive: "box",
+                  height: 0.3,
+                  width: 1.1,
+                  depth: 0.05,
                 }}
-                position="0 0 0.03"
-              />
+                material={{
+                  color: systemState.language === "en" ? "#013880" : "#fff",
+                }}
+                position="1.13 0.0 0.0"
+                events={{
+                  click: () => {
+                    dispatch(selectLanguage("en"));
+                  },
+                }}
+              >
+                <Entity
+                  text={{
+                    value: "English",
+                    width: 2.5,
+                    color: systemState.language === "en" ? "white" : "#013880",
+                    align: "center",
+                  }}
+                  position="0 0 0.03"
+                />
+              </Entity>
             </Entity>
           </Entity>
 
@@ -216,23 +226,15 @@ export default function SettingScreen() {
                 value: "News/Post Kecepatan Orbit",
                 width: 3.2,
                 color: "black",
-                align: "left",
                 anchor: "left",
               }}
-              position="-0.5 0 0.01"
+              position="-0.4 0.0 0.05"
             />
             <Entity
               class="clickable"
-              geometry={{
-                primitive: "box",
-                height: 0.3,
-                width: 0.3,
-                depth: 0.01,
-              }}
-              material={{
-                color: "#fff",
-              }}
-              position="-0.3 -0.3 0.02"
+              gltf-model={button}
+              scale="0.25 0.25 0.25"
+              position="-0.15 -0.3 0.05"
               event-set__mouseenter={{
                 material: {
                   color: "#013880",
@@ -248,9 +250,9 @@ export default function SettingScreen() {
               <Entity
                 geometry="primitive: plane; height: 1.0; width: 1.0"
                 material={{ src: "#iconArrow", alphaTest: 0.5 }}
-                position="0 0 0.01"
+                position="0 0 0.15"
                 rotation="0 0 180"
-                scale="0.2 0.2 0.2"
+                scale="0.45 0.45 0.45"
               />
             </Entity>
             <Entity
@@ -260,20 +262,13 @@ export default function SettingScreen() {
                 color: "black",
                 align: "center",
               }}
-              position="0.15 -0.3 0.01"
+              position="0.2 -0.3 0.05"
             />
             <Entity
               class="clickable"
-              geometry={{
-                primitive: "box",
-                height: 0.3,
-                width: 0.3,
-                depth: 0.01,
-              }}
-              material={{
-                color: "#fff",
-              }}
-              position="0.6 -0.3 0.02"
+              gltf-model={button}
+              scale="0.25 0.25 0.25"
+              position="0.6 -0.3 0.05"
               event-set__mouseenter={{
                 material: {
                   color: "#013880",
@@ -289,8 +284,8 @@ export default function SettingScreen() {
               <Entity
                 geometry="primitive: plane; height: 1.0; width: 1.0"
                 material={{ src: "#iconArrow", alphaTest: 0.5 }}
-                position="0 0 0.01"
-                scale="0.2 0.2 0.2"
+                position="0 0 0.15"
+                scale="0.45 0.45 0.45"
               />
             </Entity>
           </Entity>
@@ -306,7 +301,7 @@ export default function SettingScreen() {
               color: "black",
               align: "center",
             }}
-            position="-0.3 1.25 0.01"
+            position="-0.15 1.0 0.05"
           />
           <Entity id="its">
             <Entity
@@ -317,7 +312,7 @@ export default function SettingScreen() {
                 width: 1.0,
                 depth: 0.02,
               }}
-              position="0 0.65 0.02"
+              position="0.15 0.45 0.02"
               material={{
                 color: "#013880",
                 opacity: "0.9",
@@ -384,7 +379,7 @@ export default function SettingScreen() {
                 width: 1.0,
                 depth: 0.02,
               }}
-              position="1.2 0.65 0.02"
+              position="1.25 0.45 0.02"
               event-set__enter={{
                 _event: "mouseenter",
                 _target: "#colorTitle",

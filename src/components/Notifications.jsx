@@ -83,8 +83,6 @@ export default function Notifications() {
     <Entity
       id="notifications"
       primitive="a-box"
-      position="0 1.2 -3.2"
-      rotation="-15 0 0"
       height="2.6"
       width="3.8"
       depth="0.05"
@@ -92,6 +90,8 @@ export default function Notifications() {
         color: "#EBEBF0",
         opacity: systemState.theme === "colorfun" ? "1.0" : "0.9",
       }}
+      position="0 1.2 -3.5"
+      rotation="-15 0 0"
     >
       <Entity
         text={{
