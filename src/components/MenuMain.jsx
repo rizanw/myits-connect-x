@@ -6,7 +6,6 @@ import {
   clickNewsList,
   clickPostList,
 } from "../store/navigation";
-import { getNews } from "../store/news/actions";
 import { getPosts } from "../store/post/actions";
 
 export default function MenuMain() {
@@ -55,8 +54,6 @@ export default function MenuMain() {
         }}
         events={{
           click: () => {
-            console.log("get data");
-            dispatch(getNews());
             dispatch(clickNewsList());
           },
         }}

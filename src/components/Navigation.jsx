@@ -16,12 +16,14 @@ import navbar from "../assets/gltf/navBar.gltf";
 import button from "../assets/gltf/buttonRec.gltf";
 import buttonCircle from "../assets/gltf/buttonCir.gltf";
 import buttonSmall from "../assets/gltf/buttonRecSmall.gltf";
+import { randomColor } from "../utils/colors";
 
 export default function Navigation() {
   const [time, setTime] = useState("");
   const dispatch = useDispatch();
   const navigationState = useSelector((state) => state.navigation);
   const authState = useSelector((state) => state.auth);
+  const systemState = useSelector((state) => state.system);
 
   useEffect(() => {
     setInterval(clock, 1000);
@@ -102,9 +104,15 @@ export default function Navigation() {
 
       <Entity
         id="nav-button-profile"
-        gltf-model={buttonCircle}
         class="clickable"
-        rotation="90 0 0"
+        geometry={{
+          primitive: "cylinder",
+          height: "0.3",
+          radius: "0.7",
+        }}
+        material={{
+          color: systemState.theme === "colorfun" ? randomColor() : "#fff",
+        }}
         position="0 0.120 2"
         event-set__enter={{
           _event: "mouseenter",
@@ -130,15 +138,15 @@ export default function Navigation() {
           geometry="primitive: plane; height: 1.0; width: 1.0"
           color="white"
           material={{ src: "#iconProfile", alphaTest: 0.5 }}
-          rotation="180 0 -90"
-          position="0 0 -0.12"
-          scale="0.7 0.7 0.7"
+          position="0 0.3 0"
+          rotation="-75 0.0 -90"
+          scale="0.65 0.65 0.65"
         />
         <Entity
           id="profileTitle"
           text={{ value: "Profil", width: 6, color: "black", align: "center" }}
-          rotation="0 180 90"
-          position="-0.82 0 -0.10"
+          rotation="-75 0.0 -90"
+          position="-0.82 0.1 0.0"
           visible="false"
         />
       </Entity>

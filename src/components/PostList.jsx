@@ -1,18 +1,24 @@
 import { h } from "preact";
 import { Entity } from "aframe-react";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "preact/hooks";
 import { circularPositionFrom } from "../utils/calculation";
 import Loading from "./Loading";
 import moment from "moment";
 import "moment/locale/id";
 import { setPost } from "../store/post";
 import { clickPostView } from "../store/navigation";
+import { getPosts } from "../store/post/actions";
 
 export default function PostList() {
   const dispatch = useDispatch();
   const systemState = useSelector((state) => state.system);
   const postState = useSelector((state) => state.post);
   const authState = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, []);
 
   const createCards = () => {
     let posts = postState.posts;
@@ -62,7 +68,11 @@ export default function PostList() {
             }}
           >
             <Entity position="-1.5 0.58 0.13">
-              <Entity primitive="a-image" src="#iconAvatar" scale="0.4 0.4 0.4" />
+              <Entity
+                primitive="a-image"
+                src="#iconAvatar"
+                scale="0.4 0.4 0.4"
+              />
               <Entity
                 text={{
                   value: posts[i].author.name,
@@ -105,9 +115,17 @@ export default function PostList() {
             <Entity position="0.0 -0.7 0.11">
               <Entity id="like" position="-1.0 0.0 0.0">
                 {posts[i].likes.find((id) => id === authState.id) ? (
-                  <Entity primitive="a-image" src="#iconLiked" scale="0.2 0.2 0.2" />
+                  <Entity
+                    primitive="a-image"
+                    src="#iconLiked"
+                    scale="0.2 0.2 0.2"
+                  />
                 ) : (
-                  <Entity primitive="a-image" src="#iconLike" scale="0.2 0.2 0.2" />
+                  <Entity
+                    primitive="a-image"
+                    src="#iconLike"
+                    scale="0.2 0.2 0.2"
+                  />
                 )}
                 <Entity
                   text={{
@@ -120,7 +138,11 @@ export default function PostList() {
                 />
               </Entity>
               <Entity id="comment" position="0.0 0.0 0.0">
-                <Entity primitive="a-image" src="#iconComment" scale="0.2 0.2 0.2" />
+                <Entity
+                  primitive="a-image"
+                  src="#iconComment"
+                  scale="0.2 0.2 0.2"
+                />
                 <Entity
                   text={{
                     value: posts[i].comments.length + " Komentar",

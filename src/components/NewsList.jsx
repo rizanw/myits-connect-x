@@ -59,12 +59,7 @@ export default function NewsList() {
             }}
             events={{
               click: () => {
-                dispatch(
-                  setNews({
-                    title: news[i].title,
-                    content: news[i].content,
-                  })
-                );
+                dispatch(setNews(news[i]));
                 dispatch(clickNewsDetail());
               },
             }}

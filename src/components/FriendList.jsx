@@ -104,13 +104,14 @@ export default function FriendList() {
   return (
     <Entity id="friendlist">
       {createCards()}
+
       <Entity
         id="refresh"
         primitive="a-plane"
         height="0.5"
         width="2"
         material={{
-          color: "#aaa",
+          color: "#EBEBF0",
           opacity: "0.9",
         }}
         position="0 0.2 -3.2"

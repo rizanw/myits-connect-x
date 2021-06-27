@@ -3,10 +3,7 @@ import { getNews } from "./actions";
 
 const initialState = {
   posts: [],
-  post: {
-    title: "",
-    content: "",
-  },
+  post: null,
   isLoading: true,
 };
 
