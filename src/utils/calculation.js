@@ -37,18 +37,18 @@ export function circularFriendPositionFrom(index, total, radius = 5) {
   let remain = total % 3;
   let y = 0;
   var degree = 360 / quotient;
-  console.log(index, quotient, remain);
+  // console.log(index, quotient, remain);
   if (index < quotient) {
     degree = 360 / quotient;
     y = 3.1;
-    console.log("---");
+    // console.log("---");
   } else if (index >= 10 && index < 20) {
-    console.log("--");
+    // console.log("--");
     degree = 360 / quotient;
     y = 2;
   } else {
     degree = 360 / (quotient + remain);
-    console.log("-");
+    // console.log("-");
     y = 0.9;
   }
   let angle = degrees_to_radians(degree) * index;

@@ -35,7 +35,7 @@ export default function LoginDialog() {
     dispatch(login(body));
     e.preventDefault();
     setTimeout(() => {
-      // enterVRMode();
+      enterVRMode();
     }, 1500);
   };
 

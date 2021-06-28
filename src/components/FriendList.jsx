@@ -4,19 +4,25 @@ import { circularFriendPositionFrom } from "../utils/calculation";
 import { clickProfile } from "../store/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { randomColor } from "../utils/colors";
+import Loading from "./Loading";
 
 import avatar from "../assets/icons/avatar-s.png";
 import button from "../assets/gltf/buttonRec.gltf";
 import iconArrow from "../assets/icons/arrow.png";
+import { getProfile } from "../store/profile/actions";
 
 export default function FriendList() {
   const dispatch = useDispatch();
   const systemState = useSelector((state) => state.system);
+  const profileState = useSelector((state) => state.profile);
+
+  console.log(profileState.friends);
 
   const createCards = () => {
+    let friends = profileState.friends.friends;
     let childrens = [];
-    for (let i = 0; i < 30; i++) {
-      let pos = circularFriendPositionFrom(i, 30);
+    for (let i = 0; i < friends.length; i++) {
+      let pos = circularFriendPositionFrom(i, friends.length);
       childrens.push(
         <Entity
           animation={{
@@ -54,6 +60,7 @@ export default function FriendList() {
             }}
             events={{
               click: () => {
+                dispatch(getProfile(friends[i]._id));
                 dispatch(clickProfile());
               },
             }}
@@ -66,18 +73,18 @@ export default function FriendList() {
             />
             <Entity
               text={{
-                value: "Ini adalah nama",
-                width: 4,
+                value: friends[i].name,
+                width: 3.2,
                 color: "black",
                 align: "left",
                 anchor: "left",
               }}
-              position="-0.4 0.2 0.05"
+              position="-0.4 0.16 0.05"
             />
             <Entity
               text={{
-                value: "Jurusan",
-                width: 3,
+                value: friends[i].batch + " - " + friends[i].department,
+                width: 2,
                 color: "black",
                 align: "left",
                 anchor: "left",
@@ -86,13 +93,15 @@ export default function FriendList() {
             />
             <Entity
               text={{
-                value: "Angkatan",
-                width: 3,
+                value:
+                  "Sepanjang apa kah ini coba di test dulu gimana hasilnya hayppp",
+                width: 1.5,
                 color: "black",
                 align: "left",
                 anchor: "left",
+                wrapCount: 30,
               }}
-              position="-0.4 -0.2 0.05"
+              position="-0.4 -0.18 0.05"
             />
           </Entity>
         </Entity>
@@ -101,81 +110,83 @@ export default function FriendList() {
     return childrens;
   };
 
-  return (
-    <Entity id="friendlist">
-      {createCards()}
+  if (profileState.friends.length != 0)
+    return (
+      <Entity id="friendlist">
+        {createCards()}
 
-      <Entity
-        id="refresh"
-        primitive="a-plane"
-        height="0.5"
-        width="2"
-        material={{
-          color: "#EBEBF0",
-          opacity: "0.9",
-        }}
-        position="0 0.2 -3.2"
-        rotation="-25 0 0"
-      >
         <Entity
-          text={{
-            value: "30/1000",
-            width: 3,
-            color: "black",
-            align: "center",
+          id="refresh"
+          primitive="a-plane"
+          height="0.5"
+          width="2"
+          material={{
+            color: "#EBEBF0",
+            opacity: "0.9",
           }}
-          position="0 0 0.01"
-        />
-        <Entity
-          id="button-left"
-          gltf-model={button}
-          class="clickable"
-          position="-0.7 0 0"
-          scale="0.3 0.3 0.3"
-          events={{
-            click: () => {},
-          }}
+          position="0 0.2 -3.2"
+          rotation="-25 0 0"
         >
           <Entity
-            geometry="primitive: plane; height: 1.0; width: 1.0"
-            color="white"
-            material={{ src: iconArrow, alphaTest: 0.5 }}
-            position="0 0 0.15"
-            scale="0.45 0.45 0.45"
-            rotation="0 0 180"
-          />
-        </Entity>
-        <Entity
-          id="button-right"
-          gltf-model={button}
-          class="clickable"
-          position="0.7 0 0"
-          scale="0.3 0.3 0.3"
-          events={{
-            click: () => {},
-          }}
-        >
-          <Entity
-            geometry="primitive: plane; height: 1.0; width: 1.0"
-            color="white"
-            material={{ src: iconArrow, alphaTest: 0.5 }}
-            position="0 0 0.15"
-            scale="0.45 0.45 0.45"
-          />
-          <Entity
-            id="settingsTitle"
             text={{
-              value: "Pengaturan",
-              width: 6,
+              value: "30/1000",
+              width: 3,
               color: "black",
               align: "center",
             }}
-            rotation="0 180 0"
-            position="0 -0.60 -0.10"
-            visible="false"
+            position="0 0 0.01"
           />
+          <Entity
+            id="button-left"
+            gltf-model={button}
+            class="clickable"
+            position="-0.7 0 0"
+            scale="0.3 0.3 0.3"
+            events={{
+              click: () => {},
+            }}
+          >
+            <Entity
+              geometry="primitive: plane; height: 1.0; width: 1.0"
+              color="white"
+              material={{ src: iconArrow, alphaTest: 0.5 }}
+              position="0 0 0.15"
+              scale="0.45 0.45 0.45"
+              rotation="0 0 180"
+            />
+          </Entity>
+          <Entity
+            id="button-right"
+            gltf-model={button}
+            class="clickable"
+            position="0.7 0 0"
+            scale="0.3 0.3 0.3"
+            events={{
+              click: () => {},
+            }}
+          >
+            <Entity
+              geometry="primitive: plane; height: 1.0; width: 1.0"
+              color="white"
+              material={{ src: iconArrow, alphaTest: 0.5 }}
+              position="0 0 0.15"
+              scale="0.45 0.45 0.45"
+            />
+            <Entity
+              id="settingsTitle"
+              text={{
+                value: "Pengaturan",
+                width: 6,
+                color: "black",
+                align: "center",
+              }}
+              rotation="0 180 0"
+              position="0 -0.60 -0.10"
+              visible="false"
+            />
+          </Entity>
         </Entity>
       </Entity>
-    </Entity>
-  );
+    );
+  else return <Loading />;
 }

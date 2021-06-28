@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProfile } from "./actions";
+import { getFriendList, getProfile } from "./actions";
 
 const initialState = {
   skills: [],
@@ -11,6 +11,8 @@ const initialState = {
   province: "",
   country: "",
   id: "",
+  userId: "",
+  friends: [],
 };
 
 export const profile = createSlice({
@@ -28,15 +30,18 @@ export const profile = createSlice({
         return {
           ...state,
           ...action.payload,
-          errorMessage: action.payload.message,
-          isLoggedIn: true,
           isLoading: false,
         };
-      })
-      .addCase(getProfile.rejected, (state, action) => ({
+      });
+    builder
+      .addCase(getFriendList.pending, (state, action) => ({
         ...state,
+        isLoading: true,
+      }))
+      .addCase(getFriendList.fulfilled, (state, action) => ({
+        ...state,
+        friends: action.payload,
         isLoading: false,
-        isError: true,
       }));
   },
 });

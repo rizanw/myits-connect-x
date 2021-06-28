@@ -14,7 +14,6 @@ import { getProfile } from "../store/profile/actions";
 
 import navbar from "../assets/gltf/navBar.gltf";
 import button from "../assets/gltf/buttonRec.gltf";
-import buttonCircle from "../assets/gltf/buttonCir.gltf";
 import buttonSmall from "../assets/gltf/buttonRecSmall.gltf";
 import { randomColor } from "../utils/colors";
 

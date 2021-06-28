@@ -10,6 +10,7 @@ import {
 import { clickFriendList } from "../store/navigation";
 import { randomColor } from "../utils/colors";
 import Loading from "./Loading";
+import { getFriendList } from "../store/profile/actions";
 
 import button from "../assets/gltf/buttonRec.gltf";
 import buttonSmall from "../assets/gltf/buttonRecSmall.gltf";
@@ -19,6 +20,7 @@ export default function Profile() {
   const profileState = useSelector((state) => state.profile);
   const navigationState = useSelector((state) => state.navigation);
   const systemState = useSelector((state) => state.system);
+  const userId = profileState.userId
 
   const createEducationCards = () => {
     let childrens = [];
@@ -250,6 +252,7 @@ export default function Profile() {
             }}
             events={{
               click: () => {
+                dispatch(getFriendList(userId));
                 dispatch(clickFriendList());
               },
             }}
