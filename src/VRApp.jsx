@@ -23,7 +23,7 @@ export default function VRApp() {
   const authState = useSelector((state) => state.auth);
 
   return (
-    <Scene stats vr-mode-ui="enabled: false" loading-screen>
+    <Scene stats loading-screen>
       <Assets />
       <Entity
         src={systemState.sky.background}

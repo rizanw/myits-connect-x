@@ -123,6 +123,8 @@ export default function SettingScreen() {
               controls.yawObject.rotation.y = 0;
               dispatch(logout());
               dispatch(resetNavigation());
+              var scene = document.querySelector("a-scene");
+              scene.exitVR();
             },
           }}
         >
