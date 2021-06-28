@@ -44,13 +44,13 @@ export default function Controllers() {
       </Entity>
       <Entity
         id="leftHand"
-        raycaster="objects: .raycastable"
+        raycaster="objects: .clickable"
         laser-controls="hand: left"
         line="color: #0062FF"
       />
       <Entity
         id="rightHand"
-        raycaster="objects: .raycastable"
+        raycaster="objects: .clickable"
         laser-controls="hand: right"
         line="color: #0062FF"
       />
