@@ -126,7 +126,7 @@ export default function PostView() {
         material={{
           color: "#eee",
         }}
-        position="0.0 2.6 -4.0"
+        position="0.0 2.8 -4.0"
       >
         <Entity id="post-info" position="-2.3 0.85 0.1">
           <Entity primitive="a-image" src="#iconAvatar" scale="0.4 0.4 0.4" />
@@ -164,9 +164,9 @@ export default function PostView() {
         <Entity
           id="like"
           class="clickable"
-          geometry="primitive: plane; height: 0.2; width: 1.2"
+          geometry="primitive: box; height: 0.2; width: 1.2; depth: 0.25"
           material="color: #eee"
-          position="2.0 0.95 0.1"
+          position="2.0 0.95 0.0"
           events={{
             click: () => {
               postState.post.likes.find((user) => user.id === authState.id)
@@ -192,14 +192,14 @@ export default function PostView() {
               primitive="a-image"
               src="#iconLiked"
               scale="0.15 0.15 0.15"
-              position="-0.4 0.0 0.0"
+              position="-0.4 0.0 0.13"
             />
           ) : (
             <Entity
               primitive="a-image"
               src="#iconLike"
               scale="0.15 0.15 0.15"
-              position="-0.4 0.0 0.0"
+              position="-0.4 0.0 0.13"
             />
           )}
           <Entity
@@ -209,15 +209,15 @@ export default function PostView() {
               color: "black",
               anchor: "left",
             }}
-            position="-0.25 0.0 0.0"
+            position="-0.26 0.0 0.13"
           />
         </Entity>
         <Entity
           id="comment"
           class="clickable"
-          geometry="primitive: plane; height: 0.2; width: 1.2"
+          geometry="primitive: box; height: 0.2; width: 1.2; depth: 0.25"
           material="color: #eee"
-          position="2.0 0.7 0.1"
+          position="2.0 0.7 0.0"
           events={{
             click: () => {
               setIsCommentShowed(!isCommentShowed);
@@ -238,7 +238,7 @@ export default function PostView() {
             primitive="a-image"
             src="#iconComment"
             scale="0.15 0.15 0.15"
-            position="-0.4 0.0 0.0"
+            position="-0.4 0.0 0.13"
           />
           <Entity
             text={{
@@ -247,7 +247,7 @@ export default function PostView() {
               color: "black",
               anchor: "left",
             }}
-            position="-0.25 0.0 0.0"
+            position="-0.25 0.0 0.13"
           />
         </Entity>
 
@@ -266,7 +266,7 @@ export default function PostView() {
         />
       </Entity>
       {isCommentShowed ? (
-        <Entity id="post-comments" position="0.0 -0.5 -19.0">
+        <Entity id="post-comments" position="0.0 -0.3 -18.0">
           {createCommentCards()}
         </Entity>
       ) : null}

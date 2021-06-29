@@ -97,7 +97,7 @@ export default function Navigation() {
             align: "center",
           }}
           rotation="0 180 0"
-          position="0 -0.60 -0.10"
+          position="0 -0.60 0.0"
           visible="false"
         />
       </Entity>
@@ -138,7 +138,7 @@ export default function Navigation() {
           geometry="primitive: plane; height: 1.0; width: 1.0"
           color="white"
           material={{ src: "#iconProfile", alphaTest: 0.5 }}
-          position="0 0.3 0"
+          position="0 0.16 0"
           rotation="-90 0.0 -90"
           scale="0.65 0.65 0.65"
         />
@@ -146,7 +146,7 @@ export default function Navigation() {
           id="profileTitle"
           text={{ value: "Profil", width: 6, color: "black", align: "center" }}
           rotation="-90 0.0 -90"
-          position="-0.82 0.1 0.0"
+          position="-0.82 0.0 0.0"
           visible="false"
         />
       </Entity>
@@ -187,7 +187,7 @@ export default function Navigation() {
           id="menuTitle"
           text={{ value: "Menu", width: 6, color: "black", align: "center" }}
           rotation="0 180 90"
-          position="-0.82 0 -0.10"
+          position="-0.82 0 0.0"
           visible="false"
         />
       </Entity>
@@ -233,7 +233,7 @@ export default function Navigation() {
             align: "center",
           }}
           rotation="0 180 90"
-          position="-0.82 0 -0.10"
+          position="-0.82 0 0.0"
           visible="false"
         />
       </Entity>
@@ -279,7 +279,7 @@ export default function Navigation() {
             align: "center",
           }}
           rotation="0 180 90"
-          position="-0.82 0 -0.10"
+          position="-0.82 0 0.0"
           visible="false"
         />
       </Entity>
