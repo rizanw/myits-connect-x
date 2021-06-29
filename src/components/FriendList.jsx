@@ -116,19 +116,19 @@ export default function FriendList() {
         <Entity
           id="refresh"
           primitive="a-plane"
-          height="0.5"
-          width="2"
+          height="0.4"
+          width="1.25"
           material={{
             color: "#EBEBF0",
             opacity: "0.9",
           }}
-          position="0 0.2 -3.2"
-          rotation="-25 0 0"
+          position="0 0.65 -2.1"
+          rotation="-25 0 0" 
         >
           <Entity
             text={{
               value: friends.length + "/" + friends.length,
-              width: 3,
+              width: 2.6,
               color: "black",
               align: "center",
             }}
@@ -138,8 +138,8 @@ export default function FriendList() {
             id="button-left"
             gltf-model={button}
             class="clickable"
-            position="-0.7 0 0"
-            scale="0.3 0.3 0.3"
+            position="-0.6 0 0"
+            scale="0.2 0.2 0.2"
             events={{
               click: () => {},
             }}
@@ -157,8 +157,8 @@ export default function FriendList() {
             id="button-right"
             gltf-model={button}
             class="clickable"
-            position="0.7 0 0"
-            scale="0.3 0.3 0.3"
+            position="0.6 0 0"
+            scale="0.2 0.2 0.2"
             events={{
               click: () => {},
             }}

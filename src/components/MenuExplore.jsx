@@ -1,8 +1,11 @@
 import { h } from "preact";
+import { useState } from "preact/hooks";
 import { Entity } from "aframe-react";
 import { circularPositionFromIndex } from "../utils/calculation";
 import { useDispatch } from "react-redux";
 import { changeBackgroundSky } from "../store/system";
+
+import buttonGLTF from "../assets/gltf/buttonRec.gltf";
 
 const locationId = [
   "#baakEnvirontment",
@@ -13,6 +16,7 @@ const locationId = [
   "#fasorEnvirontment",
   "#tamanAlumniEnvirontment",
   "#perpustakaanEnvirontment",
+  "#rektoratEnvirontment",
 ];
 
 const locationName = [
@@ -24,15 +28,19 @@ const locationName = [
   "Fasor",
   "Taman Alumni",
   "Perpustakaan",
+  "Rektorat",
 ];
 
 export default function MenuExplore() {
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
 
   const createSphare = () => {
     let childrens = [];
-    for (let i = 0; i < 8; i++) {
-      let pos = circularPositionFromIndex(i, 8);
+    let iPos = 0;
+    for (let i = page - 1; i < 3 * page; i++) {
+      let pos = circularPositionFromIndex(iPos, 3);
+      iPos === 2 ? (iPos = 0) : iPos++;
       childrens.push(
         <Entity position={pos}>
           <Entity
@@ -116,18 +124,18 @@ export default function MenuExplore() {
       <Entity
         id="refresh"
         primitive="a-plane"
-        height="0.5"
-        width="2"
+        height="0.4"
+        width="1.25"
         material={{
           color: "#EBEBF0",
           opacity: "0.9",
         }}
-        position="0 0.2 -3.2"
+        position="0 0.65 -2.1"
         rotation="-25 0 0"
       >
         <Entity
           text={{
-            value: "",
+            value: page * 3 + " / " + locationId.length,
             width: 3,
             color: "black",
             align: "center",
@@ -136,12 +144,16 @@ export default function MenuExplore() {
         />
         <Entity
           id="button-left"
-          gltf-model={"#buttonGLTF"}
+          gltf-model={buttonGLTF}
           class="clickable"
-          position="-0.7 0 0"
-          scale="0.3 0.3 0.3"
+          position="-0.6 0 0"
+          scale="0.2 0.2 0.2"
           events={{
-            click: () => {},
+            click: () => {
+              if (page > 1) {
+                setPage(page - 1);
+              }
+            },
           }}
         >
           <Entity
@@ -155,12 +167,16 @@ export default function MenuExplore() {
         </Entity>
         <Entity
           id="button-right"
-          gltf-model={"#buttonGLTF"}
+          gltf-model={buttonGLTF}
           class="clickable"
-          position="0.7 0 0"
-          scale="0.3 0.3 0.3"
+          position="0.6 0 0"
+          scale="0.2 0.2 0.2"
           events={{
-            click: () => {},
+            click: () => {
+              if (page < locationId.length / 3) {
+                setPage(page + 1);
+              }
+            },
           }}
         >
           <Entity

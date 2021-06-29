@@ -22,19 +22,19 @@ export default function SettingScreen() {
     <Entity
       id="settings"
       primitive="a-box"
-      height="2.6"
+      height="2.4"
       width="3.8"
       depth="0.05"
       material={{
         color: "#BCBCC0",
         opacity: systemState.theme === "colorfun" ? "1.0" : "0.9",
       }}
-      position="0 1.2 -3.5"
+      position="0 1.4 -3.5"
       rotation="-15 0 0"
     >
       <Entity
         primitive="a-box"
-        height="3"
+        height="2.8"
         width="1.4"
         depth="0.07"
         material={{
@@ -50,7 +50,7 @@ export default function SettingScreen() {
             color: "black",
             align: "center",
           }}
-          position="0 1.25 0.05"
+          position="0 1.2 0.05"
         />
 
         <Entity

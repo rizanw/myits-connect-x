@@ -16,7 +16,7 @@ export default function MenuMain() {
       <Entity
         class="clickable"
         gltf-model="#iconPostsGLTF"
-        position="-3 1.8 -6"
+        position="-3 2 -6"
         rotation="90 90 90"
         animation={{
           property: "object3D.rotation.y",
@@ -39,7 +39,7 @@ export default function MenuMain() {
       <Entity
         class="clickable"
         gltf-model="#iconNewsGLTF"
-        position="0 1.8 -6"
+        position="0 2 -6"
         rotation="90 90 90"
         animation={{
           property: "object3D.rotation.y",
@@ -61,7 +61,7 @@ export default function MenuMain() {
       <Entity
         class="clickable"
         gltf-model="#iconCompassGLTF"
-        position="3 1.8 -6"
+        position="3 2 -6"
         rotation="45 90 90"
         animation={{
           property: "object3D.rotation.y",

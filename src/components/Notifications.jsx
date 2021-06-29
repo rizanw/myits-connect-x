@@ -83,7 +83,7 @@ export default function Notifications() {
     <Entity
       id="notifications"
       primitive="a-box"
-      height="2.6"
+      height="2.4"
       width="3.8"
       depth="0.05"
       material={{
@@ -100,7 +100,7 @@ export default function Notifications() {
           color: "black",
           align: "center",
         }}
-        position="-1.35 1.05 0.05"
+        position="-1.35 1.0 0.05"
       />
 
       <Entity

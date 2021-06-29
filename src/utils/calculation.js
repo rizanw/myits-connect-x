@@ -1,6 +1,6 @@
 export function circularPositionFromIndex(index, total, radius = 4) {
-  let degree = 270 / total;
-  let angle = degrees_to_radians(degree) * index + 1;
+  let degree = 105 / total + 1;
+  let angle = degrees_to_radians(degree) * index + 2.5;
   let x = Math.sin(angle) * radius;
   let z = Math.cos(angle) * radius;
   let y = 2;
@@ -16,14 +16,14 @@ function degrees_to_radians(degrees) {
 export function circularPositionFrom(index, total, row = 2, radius = 6) {
   let quotient = Math.floor(total / row);
   let remain = total % row;
-  let y = 0;
+  let y = 1;
   var degree = 360 / quotient;
   if (index > quotient) {
     degree = 360 / quotient;
-    y = 3.4;
+    y = 4.4;
   } else {
     degree = 360 / (quotient + remain);
-    y = 1;
+    y = 2;
   }
   let angle = degrees_to_radians(degree) * index;
   let x = Math.sin(angle) * radius;

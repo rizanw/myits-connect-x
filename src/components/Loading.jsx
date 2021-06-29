@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { Entity } from "aframe-react";
+import { randomColor } from "../utils/colors";
 
 export default function Loading() {
   return (
@@ -13,6 +14,11 @@ export default function Loading() {
           dur: 4000,
           easing: "linear",
           loop: true,
+        }}
+        events={{
+          click: (e) => {
+            e.target.setAttribute("material", { color: randomColor() });
+          },
         }}
       />
       <Entity

@@ -32,7 +32,7 @@ export default function NewsView() {
           position={"-2.1 " + startY + " 0.05"}
         />
       );
-      startY -= 1;
+      startY -= 1.2;
     }
     return childrens;
   };
@@ -120,7 +120,7 @@ export default function NewsView() {
           color: systemState.theme === "colorfun" ? randomColor() : "#BCBCC0",
           opacity: systemState.theme === "colorfun" ? "1.0" : "0.9",
         }}
-        position="0 0.2 -3"
+        position="0 0.33 -3"
         rotation="-25 0 0"
       >
         <Entity

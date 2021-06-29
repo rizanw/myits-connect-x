@@ -24,7 +24,7 @@ export default function Profile() {
 
   const createEducationCards = () => {
     let childrens = [];
-    let startPos = 0.1;
+    let startPos = 0.5;
     for (let i = 0; i < profileState.educations.length; i++) {
       childrens.push(
         <Entity
@@ -79,7 +79,7 @@ export default function Profile() {
 
   const createExperienceCards = () => {
     let childrens = [];
-    let startPos = 0.1;
+    let startPos = 0.5;
     for (let i = 0; i < profileState.experiences.length; i++) {
       childrens.push(
         <Entity
@@ -134,7 +134,7 @@ export default function Profile() {
 
   const createSkillCards = () => {
     let childrens = [];
-    let startPos = -0.2;
+    let startPos = 0.3;
     for (let i = 0; i < profileState.skills.length; i++) {
       childrens.push(
         <Entity
@@ -179,7 +179,7 @@ export default function Profile() {
           material={{
             color: systemState.theme === "colorfun" ? randomColor() : "#3A337D",
           }}
-          position="-2.8 1.8 -5"
+          position="-2.8 2.1 -5"
           rotation="0 15 0"
         >
           <Entity
