@@ -40,9 +40,9 @@ export default function Navigation() {
     <Entity
       id="navigation"
       gltf-model={navbar}
-      position="0 0.4 -2.0"
+      position="0 0.35 -1.6"
       rotation="0 90 45"
-      scale="0.25 0.25 0.25"
+      scale="0.22 0.22 0.22"
       navigation
     >
       <Entity
