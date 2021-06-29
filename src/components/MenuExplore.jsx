@@ -110,5 +110,80 @@ export default function MenuExplore() {
     }
     return childrens;
   };
-  return <Entity id="menuExplore">{createSphare()}</Entity>;
+  return (
+    <Entity id="menuExplore">
+      {createSphare()}
+      <Entity
+        id="refresh"
+        primitive="a-plane"
+        height="0.5"
+        width="2"
+        material={{
+          color: "#EBEBF0",
+          opacity: "0.9",
+        }}
+        position="0 0.2 -3.2"
+        rotation="-25 0 0"
+      >
+        <Entity
+          text={{
+            value: "",
+            width: 3,
+            color: "black",
+            align: "center",
+          }}
+          position="0 0 0.01"
+        />
+        <Entity
+          id="button-left"
+          gltf-model={"#buttonGLTF"}
+          class="clickable"
+          position="-0.7 0 0"
+          scale="0.3 0.3 0.3"
+          events={{
+            click: () => {},
+          }}
+        >
+          <Entity
+            geometry="primitive: plane; height: 1.0; width: 1.0"
+            color="white"
+            material={{ src: "#iconArrow", alphaTest: 0.5 }}
+            position="0 0 0.15"
+            scale="0.45 0.45 0.45"
+            rotation="0 0 180"
+          />
+        </Entity>
+        <Entity
+          id="button-right"
+          gltf-model={"#buttonGLTF"}
+          class="clickable"
+          position="0.7 0 0"
+          scale="0.3 0.3 0.3"
+          events={{
+            click: () => {},
+          }}
+        >
+          <Entity
+            geometry="primitive: plane; height: 1.0; width: 1.0"
+            color="white"
+            material={{ src: "#iconArrow", alphaTest: 0.5 }}
+            position="0 0 0.15"
+            scale="0.45 0.45 0.45"
+          />
+          <Entity
+            id="settingsTitle"
+            text={{
+              value: "Pengaturan",
+              width: 6,
+              color: "black",
+              align: "center",
+            }}
+            rotation="0 180 0"
+            position="0 -0.60 -0.10"
+            visible="false"
+          />
+        </Entity>
+      </Entity>
+    </Entity>
+  );
 }

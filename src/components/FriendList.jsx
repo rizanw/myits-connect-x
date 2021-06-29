@@ -15,11 +15,9 @@ export default function FriendList() {
   const dispatch = useDispatch();
   const systemState = useSelector((state) => state.system);
   const profileState = useSelector((state) => state.profile);
-
-  console.log(profileState.friends);
+  const friends = profileState.friends.friends;
 
   const createCards = () => {
-    let friends = profileState.friends.friends;
     let childrens = [];
     for (let i = 0; i < friends.length; i++) {
       let pos = circularFriendPositionFrom(i, friends.length);
@@ -129,7 +127,7 @@ export default function FriendList() {
         >
           <Entity
             text={{
-              value: "30/1000",
+              value: friends.length + "/" + friends.length,
               width: 3,
               color: "black",
               align: "center",

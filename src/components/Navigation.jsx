@@ -38,10 +38,11 @@ export default function Navigation() {
 
   return (
     <Entity
+      id="navigation"
       gltf-model={navbar}
-      position="0 -0.25 -2.50"
+      position="0 0.4 -2.0"
       rotation="0 90 45"
-      scale="0.3 0.3 0.3"
+      scale="0.25 0.25 0.25"
       navigation
     >
       <Entity
@@ -138,13 +139,13 @@ export default function Navigation() {
           color="white"
           material={{ src: "#iconProfile", alphaTest: 0.5 }}
           position="0 0.3 0"
-          rotation="-75 0.0 -90"
+          rotation="-90 0.0 -90"
           scale="0.65 0.65 0.65"
         />
         <Entity
           id="profileTitle"
           text={{ value: "Profil", width: 6, color: "black", align: "center" }}
-          rotation="-75 0.0 -90"
+          rotation="-90 0.0 -90"
           position="-0.82 0.1 0.0"
           visible="false"
         />

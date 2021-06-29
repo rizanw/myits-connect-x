@@ -20,7 +20,7 @@ export default function Profile() {
   const profileState = useSelector((state) => state.profile);
   const navigationState = useSelector((state) => state.navigation);
   const systemState = useSelector((state) => state.system);
-  const userId = profileState.userId
+  const userId = profileState.userId;
 
   const createEducationCards = () => {
     let childrens = [];

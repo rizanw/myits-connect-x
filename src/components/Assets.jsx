@@ -11,6 +11,7 @@ import manarul from "../assets/environtment/360-manarul-indoor.jpg";
 import fasor from "../assets/environtment/360-fasor-lapangan.jpg";
 import tamanAlumni from "../assets/environtment/360-taman-alumni.jpg";
 import perpustakan from "../assets/environtment/360-perpustakaan-front.jpg";
+import rektorat from "../assets/environtment/360-rektorat-pole.jpg";
 
 //icons
 import iconMenu from "../assets/icons/menu.png";
@@ -56,6 +57,7 @@ export default function Assets() {
       <img id="fasorEnvirontment" src={fasor} />
       <img id="tamanAlumniEnvirontment" src={tamanAlumni} />
       <img id="perpustakaanEnvirontment" src={perpustakan} />
+      <img id="rektoratEnvirontment" src={rektorat} />
 
       <img id="iconMenu" src={iconMenu} />
       <img id="iconCompass" src={iconCompass} />
