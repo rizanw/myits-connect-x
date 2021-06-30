@@ -5,7 +5,6 @@ import "aframe";
 import "aframe-event-set-component";
 import "aframe-look-at-component";
 import "aframe-htmlembed-component";
-import "aframe-htmlembed-component";
 import "./assets/js/aframe-environment";
 import App from "./App";
 import { Provider } from "react-redux";

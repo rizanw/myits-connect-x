@@ -5,6 +5,7 @@ import "./styles/App.css";
 import VRApp from "./VRApp";
 import LoginDialog from "./components/LoginDialog";
 import { getUser } from "./store/auth/actions";
+import { clickWelcome } from "./store/navigation";
 
 function App() {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getUser());
+    if (authState.accessToken) dispatch(clickWelcome());
   }, []);
 
   return (

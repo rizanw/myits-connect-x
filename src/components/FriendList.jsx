@@ -1,26 +1,32 @@
 import { h } from "preact";
 import { Entity } from "aframe-react";
+import { useEffect, useState } from "preact/hooks";
 import { circularFriendPositionFrom } from "../utils/calculation";
 import { clickProfile } from "../store/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { randomColor } from "../utils/colors";
 import Loading from "./Loading";
+import { getProfile } from "../store/profile/actions";
 
 import avatar from "../assets/icons/avatar-s.png";
 import button from "../assets/gltf/buttonRec.gltf";
 import iconArrow from "../assets/icons/arrow.png";
-import { getProfile } from "../store/profile/actions";
 
 export default function FriendList() {
   const dispatch = useDispatch();
   const systemState = useSelector((state) => state.system);
   const profileState = useSelector((state) => state.profile);
   const friends = profileState.friends.friends;
+  const [page, setPage] = useState(1);
+  const maxCards = 30;
 
   const createCards = () => {
     let childrens = [];
-    for (let i = 0; i < friends.length; i++) {
-      let pos = circularFriendPositionFrom(i, friends.length);
+    let iPos = 0;
+    for (let i = maxCards * page - maxCards; i < maxCards * page; i++) {
+      let pos = circularFriendPositionFrom(iPos, maxCards);
+      iPos === maxCards - 1 ? (iPos = 0) : iPos++;
+      console.log(page - 1, maxCards * page, iPos);
       childrens.push(
         <Entity
           animation={{
@@ -123,11 +129,11 @@ export default function FriendList() {
             opacity: "0.9",
           }}
           position="0 0.65 -2.1"
-          rotation="-25 0 0" 
+          rotation="-25 0 0"
         >
           <Entity
             text={{
-              value: friends.length + "/" + friends.length,
+              value: page * maxCards + " / " + friends.length,
               width: 2.6,
               color: "black",
               align: "center",
@@ -141,7 +147,11 @@ export default function FriendList() {
             position="-0.6 0 0"
             scale="0.2 0.2 0.2"
             events={{
-              click: () => {},
+              click: () => {
+                if (page > 1) {
+                  setPage(page - 1);
+                }
+              },
             }}
           >
             <Entity
@@ -160,7 +170,12 @@ export default function FriendList() {
             position="0.6 0 0"
             scale="0.2 0.2 0.2"
             events={{
-              click: () => {},
+              click: () => {
+                console.log(Math.ceil(friends.length / maxCards))
+                if (page < Math.ceil(friends.length / maxCards)) {
+                  setPage(page + 1);
+                }
+              },
             }}
           >
             <Entity

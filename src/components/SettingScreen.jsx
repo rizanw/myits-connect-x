@@ -177,7 +177,7 @@ export default function SettingScreen() {
                 position="0.03 0.0 0.0"
                 events={{
                   click: () => {
-                    dispatch(selectLanguage("id"));
+                    // dispatch(selectLanguage("id"));
                   },
                 }}
               >
@@ -205,7 +205,7 @@ export default function SettingScreen() {
                 position="1.13 0.0 0.0"
                 events={{
                   click: () => {
-                    dispatch(selectLanguage("en"));
+                    // dispatch(selectLanguage("en"));
                   },
                 }}
               >

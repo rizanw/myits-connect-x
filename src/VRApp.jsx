@@ -16,6 +16,7 @@ import SettingScreen from "./components/SettingScreen";
 import FriendList from "./components/FriendList";
 import Assets from "./components/Assets";
 import Notifications from "./components/Notifications";
+import { randomColor } from "./utils/colors";
 
 export default function VRApp() {
   const navigationState = useSelector((state) => state.navigation);
@@ -47,6 +48,42 @@ export default function VRApp() {
           active: systemState.sky.background ? false : true,
         }}
       />
+
+      <Entity visible={navigationState.isWelcomeActive}>
+        <Entity
+          text={{ value: "Selamat datang kembali", width: 6, align: "center" }}
+          position="0 2.3 -4"
+          animation={{
+            property: "text.color",
+            direction: "alternate",
+            duration: 3000,
+            easing: "easeInSine",
+            loop: true,
+            to: randomColor(),
+          }}
+        />
+        <Entity
+          text={{ value: authState.name, width: 5, align: "center" }}
+          position="0 2.0 -4.1"
+          animation={{
+            property: "text.color",
+            direction: "alternate",
+            duration: 3000,
+            easing: "easeInSine",
+            loop: true,
+            to: randomColor(),
+          }}
+        />
+        <Entity
+          text={{
+            value: "Silakan ke menu jelajah untuk pergi ke kampus ITS.",
+            width: 2,
+            align: "center",
+          }}
+          position="0 0.7 -2"
+        />
+      </Entity>
+
       <Lights />
       <Controllers />
       {navigationState.isExploreActive ? <MenuExplore /> : null}

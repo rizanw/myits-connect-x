@@ -2,6 +2,7 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/auth/actions";
+import { clickWelcome } from "../store/navigation";
 
 //assets import
 import "../styles/LoginDialog.css";
@@ -25,6 +26,7 @@ export default function LoginDialog() {
         }, 1000);
       });
     }
+    dispatch(clickWelcome());
   };
 
   const onSubmit = (e) => {

@@ -38,9 +38,10 @@ export default function MenuExplore() {
   const createSphare = () => {
     let childrens = [];
     let iPos = 0;
-    for (let i = page - 1; i < 3 * page; i++) {
+    for (let i = page * page - page; i < 3 * page; i++) {
       let pos = circularPositionFromIndex(iPos, 3);
       iPos === 2 ? (iPos = 0) : iPos++;
+      console.log(page - 1, 3 * page, iPos);
       childrens.push(
         <Entity position={pos}>
           <Entity

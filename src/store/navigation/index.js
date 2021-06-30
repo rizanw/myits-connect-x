@@ -18,12 +18,18 @@ const initialState = {
 
   isSettingGeneralActive: true,
   isSettingThemeActive: false,
+
+  isWelcomeActive: false,
 };
 
 export const navigation = createSlice({
   name: "navigation",
   initialState: initialState,
   reducers: {
+    clickWelcome: (state) => ({
+      ...initialState,
+      isWelcomeActive: true,
+    }),
     clickNotification: (state) => ({
       ...initialState,
       isNotificationActive: true,
@@ -120,4 +126,5 @@ export const {
   resetProfileNavigation,
   clickSettingGeneral,
   clickSettingTheme,
+  clickWelcome
 } = navigation.actions;

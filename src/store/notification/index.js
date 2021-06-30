@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getNotif } from "./actions";
 
 const initialState = {
-  notifications: "",
+  notifications: [],
   isLoading: false,
 };
 
