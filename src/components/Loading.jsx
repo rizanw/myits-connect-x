@@ -2,7 +2,7 @@ import { h } from "preact";
 import { Entity } from "aframe-react";
 import { randomColor } from "../utils/colors";
 
-export default function Loading() {
+export default function Loading(props) {
   return (
     <Entity position="0 2 -5">
       <Entity
@@ -33,7 +33,7 @@ export default function Loading() {
       >
         <Entity
           text={{
-            value: "Loading ..",
+            value: props.text ? props.text : "Loading ..",
             width: 6,
             color: "black",
             align: "center",

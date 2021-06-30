@@ -22,7 +22,7 @@ const cursor = {
 export default function Controllers() {
   return (
     <Entity id="controller">
-      <Entity primitive="a-camera" wasd-controls-enabled={false}>
+      <Entity id="user" primitive="a-camera" wasd-controls-enabled={false}>
         <Entity
           primitive="a-cursor"
           cursor={cursor}

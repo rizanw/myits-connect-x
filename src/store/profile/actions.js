@@ -16,3 +16,26 @@ export const getFriendList = createAsyncThunk(
     return data;
   }
 );
+
+export const addFriend = createAsyncThunk(
+  "user/AddFriend",
+  async ({ me, newFriend }) => {
+    console.log(me, newFriend, "di sini");
+    const response = await request.post(`/friend`, {
+      me: me,
+      newFriend: newFriend,
+    });
+    const data = response.data.data;
+    console.log(data);
+    return data;
+  }
+);
+
+export const isFriend = createAsyncThunk(
+  "friend/isFriend",
+  async (friendId) => {
+    const response = await request.get(`/friend/is?friend=${friendId}`);
+    const data = response.data.data;
+    return data;
+  }
+);

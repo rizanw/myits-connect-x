@@ -6,7 +6,8 @@ import { clickProfile } from "../store/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { randomColor } from "../utils/colors";
 import Loading from "./Loading";
-import { getProfile } from "../store/profile/actions";
+import { getProfile, isFriend } from "../store/profile/actions";
+import { clearFriends } from "../store/profile";
 
 import avatar from "../assets/icons/avatar-s.png";
 import button from "../assets/gltf/buttonRec.gltf";
@@ -18,15 +19,22 @@ export default function FriendList() {
   const profileState = useSelector((state) => state.profile);
   const friends = profileState.friends.friends;
   const [page, setPage] = useState(1);
-  const maxCards = 30;
+
+  useEffect(() => {}, [friends]);
 
   const createCards = () => {
+    let maxCards = 0;
+    if (friends.length - page * 30 + 30 < 30) {
+      maxCards = friends.length - page * 30 + 30;
+    } else if (friends.length >= 30) {
+      maxCards = 30;
+    } else maxCards = friends.length;
+
     let childrens = [];
     let iPos = 0;
     for (let i = maxCards * page - maxCards; i < maxCards * page; i++) {
       let pos = circularFriendPositionFrom(iPos, maxCards);
       iPos === maxCards - 1 ? (iPos = 0) : iPos++;
-      console.log(page - 1, maxCards * page, iPos);
       childrens.push(
         <Entity
           animation={{
@@ -38,7 +46,7 @@ export default function FriendList() {
           }}
         >
           <Entity
-            look-at=""
+            look-at="#user"
             class="clickable"
             geometry={{
               primitive: "box",
@@ -64,7 +72,10 @@ export default function FriendList() {
             }}
             events={{
               click: () => {
-                dispatch(getProfile(friends[i]._id));
+                dispatch(getProfile(friends[i]._id)).then((res) => {
+                  dispatch(isFriend(friends[i]._id));
+                  dispatch(clearFriends());
+                });
                 dispatch(clickProfile());
               },
             }}
@@ -133,7 +144,10 @@ export default function FriendList() {
         >
           <Entity
             text={{
-              value: page * maxCards + " / " + friends.length,
+              value:
+                (page * 30 > friends.length ? friends.length : page * 30) +
+                " / " +
+                friends.length,
               width: 2.6,
               color: "black",
               align: "center",
@@ -171,8 +185,7 @@ export default function FriendList() {
             scale="0.2 0.2 0.2"
             events={{
               click: () => {
-                console.log(Math.ceil(friends.length / maxCards))
-                if (page < Math.ceil(friends.length / maxCards)) {
+                if (page < Math.ceil(friends.length / 30)) {
                   setPage(page + 1);
                 }
               },
@@ -201,5 +214,31 @@ export default function FriendList() {
         </Entity>
       </Entity>
     );
-  else return <Loading />;
+  else {
+    if (profileState.errorMessage)
+      return (
+        <Entity
+          primitive="a-plane"
+          height="1"
+          width="2"
+          material={{
+            color: "#EBEBF0",
+            opacity: "0.9",
+          }}
+          position="0 1.5 -3"
+        >
+          <Entity
+            text={{
+              value: profileState.errorMessage,
+              width: 3,
+              color: "black",
+              align: "center",
+              anchor: "center",
+            }}
+            position="0 0 0.1"
+          />
+        </Entity>
+      );
+    return <Loading />;
+  }
 }

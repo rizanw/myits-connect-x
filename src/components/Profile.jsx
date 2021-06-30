@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { useEffect } from "preact/hooks";
 import { Entity, Scene } from "aframe-react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,17 +11,24 @@ import {
 import { clickFriendList } from "../store/navigation";
 import { randomColor } from "../utils/colors";
 import Loading from "./Loading";
-import { getFriendList } from "../store/profile/actions";
+import { addFriend, getFriendList, isFriend } from "../store/profile/actions";
 
 import button from "../assets/gltf/buttonRec.gltf";
 import buttonSmall from "../assets/gltf/buttonRecSmall.gltf";
-
+import { auth } from "../store/auth";
 export default function Profile() {
   const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
   const profileState = useSelector((state) => state.profile);
   const navigationState = useSelector((state) => state.navigation);
   const systemState = useSelector((state) => state.system);
   const userId = profileState.userId;
+
+  console.log("profileState", authState.id);
+
+  useEffect(() => {
+    if (userId !== authState.id) dispatch(isFriend(userId));
+  }, []);
 
   const createEducationCards = () => {
     let childrens = [];
@@ -198,7 +206,7 @@ export default function Profile() {
             />
           </Entity>
 
-          {profileState.id ? null : (
+          {profileState.isFriend ? null : (
             <Entity
               class="clickable"
               gltf-model={buttonSmall}
@@ -213,6 +221,22 @@ export default function Profile() {
                 _event: "mouseleave",
                 _target: "#connectTitle",
                 visible: "false",
+              }}
+              events={{
+                click: () => {
+                  dispatch(
+                    addFriend({
+                      me: authState.id,
+                      newFriend: userId,
+                    })
+                  ).then((res) => {
+                    console.log("done!", {
+                      me: authState.id,
+                      newFriend: userId,
+                    });
+                    dispatch(isFriend(userId));
+                  });
+                },
               }}
             >
               <Entity
