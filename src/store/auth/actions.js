@@ -4,8 +4,8 @@ import { request } from "../../utils/request";
 export const login = createAsyncThunk("user/LOGIN", async (body) => {
   const response = await request.post("/login", body);
   const data = response.data.data;
-  localStorage.setItem("token", data.accessToken);
-  return data;
+  if (data) localStorage.setItem("token", data.accessToken);
+  return response.data;
 });
 
 export const getUser = createAsyncThunk("user/GetProfile", async () => {

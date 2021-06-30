@@ -34,11 +34,14 @@ export default function LoginDialog() {
       email: emailField,
       password: passwordField,
     };
-    dispatch(login(body));
+    dispatch(login(body)).then((res) => {
+      if (res.payload) {
+        setTimeout(() => {
+          enterVRMode();
+        }, 1500);
+      }
+    });
     e.preventDefault();
-    setTimeout(() => {
-      enterVRMode();
-    }, 1500);
   };
 
   return (
@@ -60,6 +63,16 @@ export default function LoginDialog() {
                 className="img_fluid"
                 alt=""
               />
+            </div>
+
+            <div
+              style={
+                authState.error ? { display: "flex" } : { display: "none" }
+              }
+            >
+              <div className="alert alert-danger" role="alert">
+                {authState.error}
+              </div>
             </div>
 
             <div style={{ display: "flex" }}>

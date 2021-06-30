@@ -7,6 +7,7 @@ const initialState = {
   position: "",
   accessToken: localStorage.getItem("token"),
   isLoading: false,
+  error: "",
 };
 
 export const auth = createSlice({
@@ -28,7 +29,22 @@ export const auth = createSlice({
         ...state,
         ...action.payload,
         isLoading: false,
-      }));
+      }))
+      .addCase(login.rejected, (state, action) => {
+        let status = action.error.message.replace(/^\D+/g, "");
+        if (status === "404") {
+          return {
+            ...state,
+            error:
+              "Email tidak terdaftar, silakan periksa kembali email anda atau lakukan registrasi di laman myITS Connect",
+          };
+        } else if (status === "401") {
+          return {
+            ...state,
+            error: "Password salah, silakan periksa kembali password anda",
+          };
+        }
+      });
     builder
       .addCase(getUser.pending, (state) => ({
         ...state,
