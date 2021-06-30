@@ -26,7 +26,7 @@ export default function PostView() {
           animation={{
             property: "rotation",
             to: "0 360 0",
-            dur: 10000 / systemState.orbitalSpeed.toFixed(1),
+            dur: 20000 / systemState.orbitalSpeed.toFixed(1),
             easing: "linear",
             loop: "true",
           }}
@@ -266,7 +266,7 @@ export default function PostView() {
         />
       </Entity>
       {isCommentShowed ? (
-        <Entity id="post-comments" position="0.0 -0.3 -18.0">
+        <Entity id="post-comments" position="0.0 -0.6 -18.0">
           {createCommentCards()}
         </Entity>
       ) : null}

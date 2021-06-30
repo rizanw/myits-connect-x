@@ -30,7 +30,7 @@ export default function PostList() {
           animation={{
             property: "rotation",
             to: "0 " + (pos.y === 1 ? "360" : "-360") + " 0",
-            dur: 10000 / systemState.orbitalSpeed.toFixed(1),
+            dur: 15000 / systemState.orbitalSpeed.toFixed(1),
             easing: "linear",
             loop: "true",
             pauseEvents: "mouseenter",

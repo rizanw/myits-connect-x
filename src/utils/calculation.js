@@ -20,10 +20,10 @@ export function circularPositionFrom(index, total, row = 2, radius = 6) {
   var degree = 360 / quotient;
   if (index > quotient) {
     degree = 360 / quotient;
-    y = 4.4;
+    y = 4.2;
   } else {
     degree = 360 / (quotient + remain);
-    y = 2;
+    y = 1.4;
   }
   let angle = degrees_to_radians(degree) * index;
   let x = Math.sin(angle) * radius;
